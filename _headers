@@ -1,4 +1,4 @@
-# Cache static assets aggressively
+# Static assets - immutable cache (versioned via service worker)
 /css/*
   Cache-Control: public, max-age=31536000, immutable
 
@@ -8,16 +8,25 @@
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
-# HTML pages - cache briefly, revalidate
+# HTML pages - short cache, always revalidate
 /*.html
   Cache-Control: public, max-age=3600, must-revalidate
 
 /
   Cache-Control: public, max-age=3600, must-revalidate
 
-# Security headers
+# Service worker - never cache
+/sw.js
+  Cache-Control: no-cache, no-store, must-revalidate
+
+# Security & performance headers for all routes
 /*
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
