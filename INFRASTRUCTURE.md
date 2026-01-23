@@ -11,13 +11,17 @@ Complete reference for the website hosting, DNS, deployment, and architecture.
 2. [Domain & DNS Configuration (GoDaddy)](#domain--dns-configuration-godaddy)
 3. [Hosting: Cloudflare Pages](#hosting-cloudflare-pages)
 4. [GitHub Repository](#github-repository)
-5. [How to Deploy (Manual via Wrangler)](#how-to-deploy-manual-via-wrangler)
-6. [How to Set Up Automatic Deploys (GitHub → Cloudflare)](#how-to-set-up-automatic-deploys-github--cloudflare)
+5. [How to Deploy (Automatic — GitHub Actions)](#how-to-deploy-automatic--github-actions)
+6. [Automatic Deploys (Already Configured)](#automatic-deploys-already-configured)
 7. [How to Revert to GitHub Pages](#how-to-revert-to-github-pages)
 8. [File Architecture](#file-architecture)
 9. [Security Headers](#security-headers)
 10. [Service Worker Strategy](#service-worker-strategy)
 11. [Troubleshooting](#troubleshooting)
+12. [Quick Reference: All IP Addresses](#quick-reference-all-ip-addresses)
+13. [Quick Reference: Key Commands](#quick-reference-key-commands)
+14. [Architecture Overhaul Summary (January 2026)](#architecture-overhaul-summary-january-2026)
+15. [Account Information](#account-information)
 
 ---
 
@@ -142,6 +146,8 @@ curl -sI https://www.powerscraperpro.com | grep server
 ### Commit History
 
 ```
+1892fd3 [CI] Add GitHub Actions auto-deploy to Cloudflare Pages
+7c1b011 [Docs] Add comprehensive infrastructure & deployment reference
 183b813 [Architecture] Complete CSS/JS/SW overhaul - best practices rewrite
 23f8d6b Fix responsive CSS: correct breakpoint order + fluid typography
 146e1cf Improve responsive breakpoints for all device sizes
@@ -234,6 +240,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy . --project-name=powerscraperpro
 ```
 
 ### GitHub Repository Secrets
@@ -592,6 +599,68 @@ curl -sI https://www.powerscraperpro.com | grep server
 # List Cloudflare Pages deployments
 npx wrangler pages deployment list --project-name=powerscraperpro
 ```
+
+---
+
+## Architecture Overhaul Summary (January 2026)
+
+Complete rewrite of CSS, JavaScript, and Service Worker for best-practice architecture.
+
+### CSS Changes (`css/styles.css`)
+
+- Removed duplicate `clamp()` fluid typography declarations that caused conflicts
+- Fixed grid overflow on small screens: `minmax(min(350px, 100%), 1fr)` prevents horizontal scroll
+- Added `content-visibility: auto` on major sections for rendering performance
+- Added `scrollbar-gutter: stable` to prevent layout shift on scroll
+- Added `:focus-visible` styles (keyboard-only focus rings, no mouse outlines)
+- Added `text-wrap: balance` on headings, `text-wrap: pretty` on body text
+- Replaced physical properties with logical properties (`margin-inline`, `padding-inline`)
+- Used `100dvh` (dynamic viewport height) for hero sections
+- Added `touch-action: manipulation` on interactive elements
+- Added `will-change: transform` on animated particles
+- Added `:active` state on buttons for tactile feedback
+- Added complete print styles (`@media print`)
+- Added cross-browser scrollbar styling (`::-webkit-scrollbar` + `scrollbar-width`)
+- Responsive breakpoints ordered correctly: 1024px → 768px → 640px → 480px → 360px
+- Replaced inline price styles in `download.html` with `.download-card__price` CSS class
+
+### JavaScript Changes (`js/main.js`)
+
+- Added `prefers-reduced-motion` check used throughout all animations
+- Mobile nav: body scroll lock (`overflow: hidden`), Escape key closes, focus returns to toggle button
+- Lightbox: stores `previousFocus`, restores on close, traps focus inside modal
+- Gallery items: `tabindex="0"` + `role="button"` + Enter/Space keyboard activation
+- Particles: uses `DocumentFragment` for batch DOM insertion (single reflow)
+- Particles: skipped entirely if reduced motion is preferred
+- Counter animation: skipped if reduced motion (shows final value immediately)
+- Active navigation link: automatically adds `aria-current="page"`
+- Uses `window.scrollY` instead of deprecated `pageYOffset`
+- All animations respect user preference for reduced motion
+
+### Service Worker Changes (`sw.js`)
+
+- Cache version bumped from `psp-v1` to `psp-v2`
+- HTML pages: network-first strategy (always try to fetch fresh, use cache only as offline fallback)
+- Static assets (CSS, JS, images): stale-while-revalidate (serve cached version instantly, update in background)
+- Removed heavy screenshot precaching (only critical path assets precached)
+- Only handles same-origin GET requests (ignores third-party and non-GET)
+- Old caches automatically deleted on SW activation
+
+### Security Headers (`_headers`)
+
+- Added full Content-Security-Policy (CSP)
+- Added HSTS with `includeSubDomains` and `preload`
+- Added `X-XSS-Protection: 1; mode=block`
+- Added `Cross-Origin-Opener-Policy: same-origin`
+- Added `Cross-Origin-Resource-Policy: same-origin`
+- Added `Permissions-Policy` with `interest-cohort=()` (FLoC opt-out)
+- Added `no-cache, no-store, must-revalidate` for `/sw.js` (always fresh)
+- Added long-term immutable caching for `/css/*`, `/js/*`, `/assets/*`
+
+### HTML Fixes
+
+- `404.html`: Updated copyright year to 2026, added `defer` on script tag
+- `download.html`: Replaced inline price styles with CSS class
 
 ---
 
