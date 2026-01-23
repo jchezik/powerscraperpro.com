@@ -10,24 +10,54 @@
   <!-- Open Graph -->
   <meta property="og:title" content="Power Scraper Pro - Professional Media Library Manager">
   <meta property="og:description" content="The ultimate macOS app for organizing your media library with automated metadata scraping and multi-platform support.">
-  <meta property="og:image" content="assets/screenshots/dashboard-library.png">
+  <meta property="og:image" content="https://powerscraperpro.com/assets/screenshots/dashboard-library.png">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://powerscraperpro.com">
+  <meta property="og:site_name" content="Power Scraper Pro">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Power Scraper Pro">
   <meta name="twitter:description" content="Professional Media Library Manager for macOS">
-  <meta name="twitter:image" content="assets/screenshots/dashboard-library.png">
+  <meta name="twitter:image" content="https://powerscraperpro.com/assets/screenshots/dashboard-library.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/icons/app-icon.png">
   <link rel="apple-touch-icon" href="assets/icons/app-icon.png">
 
+  <!-- Preload critical assets -->
+  <link rel="preload" href="css/styles.css" as="style">
+  <link rel="preload" href="assets/icons/app-icon.png" as="image">
+  <link rel="preload" href="assets/screenshots/dashboard-library.png" as="image">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://powerscraperpro.com/">
+
   <!-- Styles -->
   <link rel="stylesheet" href="css/styles.css">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Power Scraper Pro",
+    "operatingSystem": "macOS 26.0 (Tahoe)",
+    "applicationCategory": "MultimediaApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "39.95",
+      "priceCurrency": "EUR"
+    },
+    "description": "Professional-grade metadata scraping, artwork management, and library organization for Kodi, Plex, Jellyfin, and Emby.",
+    "url": "https://powerscraperpro.com",
+    "image": "https://powerscraperpro.com/assets/icons/app-icon.png"
+  }
+  </script>
 </head>
 <body>
+  <!-- Skip to content -->
+  <a href="#main-content" class="sr-only sr-only--focusable">Skip to main content</a>
 
   <!-- Navigation -->
   <nav class="nav" role="navigation" aria-label="Main navigation">
@@ -55,6 +85,7 @@
   </nav>
 
   <!-- Hero Section -->
+  <main id="main-content">
   <section class="hero">
     <div class="particles"></div>
     <div class="hero__bg-glow hero__bg-glow--1"></div>
@@ -88,7 +119,7 @@
 
       <div class="hero__screenshot">
         <div class="hero__screenshot-glow"></div>
-        <img src="assets/screenshots/dashboard-library.png" alt="Power Scraper Pro Dashboard showing library overview with movies, TV shows, and health monitoring" class="hero__screenshot-img">
+        <img src="assets/screenshots/dashboard-library.png" alt="Power Scraper Pro Dashboard showing library overview with movies, TV shows, and health monitoring" class="hero__screenshot-img" width="1000" height="625" fetchpriority="high">
       </div>
     </div>
   </section>
@@ -96,19 +127,19 @@
   <!-- Platform Support -->
   <div class="platforms reveal">
     <div class="platform-badge">
-      <span class="platform-badge__icon">🎬</span>
+      <span class="platform-badge__icon" aria-hidden="true">🎬</span>
       Kodi
     </div>
     <div class="platform-badge">
-      <span class="platform-badge__icon">📺</span>
+      <span class="platform-badge__icon" aria-hidden="true">📺</span>
       Plex
     </div>
     <div class="platform-badge">
-      <span class="platform-badge__icon">🎞️</span>
+      <span class="platform-badge__icon" aria-hidden="true">🎞️</span>
       Jellyfin
     </div>
     <div class="platform-badge">
-      <span class="platform-badge__icon">📡</span>
+      <span class="platform-badge__icon" aria-hidden="true">📡</span>
       Emby
     </div>
   </div>
@@ -145,7 +176,7 @@
       <div class="features-grid">
         <!-- Feature 1 -->
         <div class="feature-card reveal reveal--delay-1">
-          <div class="feature-card__icon">🎯</div>
+          <div class="feature-card__icon" aria-hidden="true">🎯</div>
           <h3 class="feature-card__title">Automated Scraping</h3>
           <p class="feature-card__desc">10-step atomic pipeline for movies and TV shows. Intelligent matching with fuzzy title comparison, year validation, and confidence scoring.</p>
           <ul class="feature-card__list">
@@ -158,7 +189,7 @@
 
         <!-- Feature 2 -->
         <div class="feature-card reveal reveal--delay-2">
-          <div class="feature-card__icon">🖼️</div>
+          <div class="feature-card__icon" aria-hidden="true">🖼️</div>
           <h3 class="feature-card__title">22 Artwork Types</h3>
           <p class="feature-card__desc">Comprehensive artwork management with dual-source strategy. Posters, fanart, banners, clearlogos, disc art, season posters, and more.</p>
           <ul class="feature-card__list">
@@ -171,7 +202,7 @@
 
         <!-- Feature 3 -->
         <div class="feature-card reveal reveal--delay-3">
-          <div class="feature-card__icon">🛡️</div>
+          <div class="feature-card__icon" aria-hidden="true">🛡️</div>
           <h3 class="feature-card__title">Safe Mode</h3>
           <p class="feature-card__desc">Non-destructive library organization using hardlinks. Zero additional disk space, original files remain untouched in their download location.</p>
           <ul class="feature-card__list">
@@ -184,7 +215,7 @@
 
         <!-- Feature 4 -->
         <div class="feature-card reveal reveal--delay-1">
-          <div class="feature-card__icon">📋</div>
+          <div class="feature-card__icon" aria-hidden="true">📋</div>
           <h3 class="feature-card__title">NFO Generation</h3>
           <p class="feature-card__desc">Complete Kodi-compliant XML metadata files with cast, crew, ratings, trailers, collections, and media info tags for movies, shows, and episodes.</p>
           <ul class="feature-card__list">
@@ -197,7 +228,7 @@
 
         <!-- Feature 5 -->
         <div class="feature-card reveal reveal--delay-2">
-          <div class="feature-card__icon">📂</div>
+          <div class="feature-card__icon" aria-hidden="true">📂</div>
           <h3 class="feature-card__title">Watch Folders</h3>
           <p class="feature-card__desc">Set up monitored folders that automatically detect and scrape new media. FSEvents-based monitoring with file stability checking.</p>
           <ul class="feature-card__list">
@@ -210,7 +241,7 @@
 
         <!-- Feature 6 -->
         <div class="feature-card reveal reveal--delay-3">
-          <div class="feature-card__icon">🏥</div>
+          <div class="feature-card__icon" aria-hidden="true">🏥</div>
           <h3 class="feature-card__title">Library Health</h3>
           <p class="feature-card__desc">Comprehensive health monitoring with missing artwork detection, orphaned files, broken hardlinks, duplicates, and missing episode tracking.</p>
           <ul class="feature-card__list">
@@ -237,7 +268,7 @@
               <a href="features.html" class="btn btn--secondary">Learn More</a>
             </div>
             <div class="showcase__image">
-              <img src="assets/screenshots/dashboard-library.png" alt="Library Dashboard" class="showcase__img">
+              <img src="assets/screenshots/dashboard-library.png" alt="Library Dashboard" class="showcase__img" loading="lazy" width="600" height="375">
             </div>
           </div>
         </div>
@@ -251,7 +282,7 @@
               <a href="screenshots.html" class="btn btn--secondary">See Screenshots</a>
             </div>
             <div class="showcase__image">
-              <img src="assets/screenshots/movies-dashboard.png" alt="Movies Dashboard" class="showcase__img">
+              <img src="assets/screenshots/movies-dashboard.png" alt="Movies Dashboard" class="showcase__img" loading="lazy" width="600" height="375">
             </div>
           </div>
         </div>
@@ -265,7 +296,7 @@
               <a href="screenshots.html" class="btn btn--secondary">See Screenshots</a>
             </div>
             <div class="showcase__image">
-              <img src="assets/screenshots/tv-dashboard.png" alt="TV Shows Dashboard" class="showcase__img">
+              <img src="assets/screenshots/tv-dashboard.png" alt="TV Shows Dashboard" class="showcase__img" loading="lazy" width="600" height="375">
             </div>
           </div>
         </div>
@@ -284,37 +315,37 @@
 
       <div class="features-grid">
         <div class="feature-card reveal reveal--delay-1">
-          <div class="feature-card__icon">☁️</div>
+          <div class="feature-card__icon" aria-hidden="true">☁️</div>
           <h3 class="feature-card__title">iCloud Sync</h3>
           <p class="feature-card__desc">Sync settings across all your Macs with iCloud. API keys stay secure in your local Keychain and are never synced.</p>
         </div>
 
         <div class="feature-card reveal reveal--delay-2">
-          <div class="feature-card__icon">🎬</div>
+          <div class="feature-card__icon" aria-hidden="true">🎬</div>
           <h3 class="feature-card__title">Collections</h3>
           <p class="feature-card__desc">Automatic collection detection from TMDB with completeness tracking. See what movies you're missing from any franchise.</p>
         </div>
 
         <div class="feature-card reveal reveal--delay-3">
-          <div class="feature-card__icon">📅</div>
+          <div class="feature-card__icon" aria-hidden="true">📅</div>
           <h3 class="feature-card__title">Upcoming Releases</h3>
           <p class="feature-card__desc">Track upcoming movies and TV episodes from your library shows. Never miss a new season or sequel release.</p>
         </div>
 
         <div class="feature-card reveal reveal--delay-1">
-          <div class="feature-card__icon">🔄</div>
+          <div class="feature-card__icon" aria-hidden="true">🔄</div>
           <h3 class="feature-card__title">Rename & Rescrape</h3>
           <p class="feature-card__desc">One-click rename and rescrape for incorrectly matched items. Manual TMDB/TVDB ID entry for precise matching.</p>
         </div>
 
         <div class="feature-card reveal reveal--delay-2">
-          <div class="feature-card__icon">💾</div>
+          <div class="feature-card__icon" aria-hidden="true">💾</div>
           <h3 class="feature-card__title">Auto Backups</h3>
           <p class="feature-card__desc">Automatic database backups before scraping, on launch, and on quit. Configurable retention with one-click restore.</p>
         </div>
 
         <div class="feature-card reveal reveal--delay-3">
-          <div class="feature-card__icon">⚡</div>
+          <div class="feature-card__icon" aria-hidden="true">⚡</div>
           <h3 class="feature-card__title">GPU Accelerated</h3>
           <p class="feature-card__desc">Metal-powered thumbnail generation with intelligent caching. Adaptive batch sizing based on memory pressure and thermal state.</p>
         </div>
@@ -342,7 +373,7 @@
         <img src="assets/icons/app-icon.png" alt="Power Scraper Pro" class="footer__brand-icon">
         <span class="footer__brand-name">Power Scraper Pro</span>
       </div>
-      <p class="footer__copy">&copy; 2025 Power Scraper Pro. All rights reserved.</p>
+      <p class="footer__copy">&copy; 2026 Power Scraper Pro. All rights reserved.</p>
       <ul class="footer__links">
         <li><a href="features.html" class="footer__link">Features</a></li>
         <li><a href="screenshots.html" class="footer__link">Screenshots</a></li>
@@ -351,6 +382,14 @@
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  </main>
+  <script src="js/main.js" defer></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js');
+      });
+    }
+  </script>
 </body>
 </html>

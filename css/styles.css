@@ -162,6 +162,26 @@ body {
   border: 0;
 }
 
+.sr-only--focusable:focus {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  padding: var(--space-3) var(--space-6);
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  background: var(--color-accent);
+  color: white;
+  font-weight: 600;
+  font-size: var(--text-base);
+  z-index: 10000;
+  text-decoration: none;
+  border-radius: 0 0 var(--radius-md) 0;
+}
+
 /* --- Navigation --- */
 .nav {
   position: fixed;

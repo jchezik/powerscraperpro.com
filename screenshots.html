@@ -5,11 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Screenshots - Power Scraper Pro</title>
   <meta name="description" content="See Power Scraper Pro in action. Browse screenshots of the dashboard, movie library, TV shows, collections, settings, and more.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Screenshots - Power Scraper Pro">
+  <meta property="og:description" content="See Power Scraper Pro in action with screenshots of the dashboard, libraries, and settings.">
+  <meta property="og:image" content="https://powerscraperpro.com/assets/screenshots/dashboard-library.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://powerscraperpro.com/screenshots.html">
+  <meta property="og:site_name" content="Power Scraper Pro">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Screenshots - Power Scraper Pro">
+  <meta name="twitter:description" content="See Power Scraper Pro in action on macOS.">
+  <meta name="twitter:image" content="https://powerscraperpro.com/assets/screenshots/dashboard-library.png">
+
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/icons/app-icon.png">
   <link rel="apple-touch-icon" href="assets/icons/app-icon.png">
+
+  <!-- Preload -->
+  <link rel="preload" href="css/styles.css" as="style">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://powerscraperpro.com/screenshots.html">
+
+  <!-- Styles -->
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <!-- Skip to content -->
+  <a href="#main-content" class="sr-only sr-only--focusable">Skip to main content</a>
 
   <!-- Navigation -->
   <nav class="nav" role="navigation" aria-label="Main navigation">
@@ -34,10 +60,10 @@
   </nav>
 
   <!-- Page Header -->
-  <section class="feature-detail">
+  <section class="feature-detail" id="main-content">
     <div class="container">
       <div class="feature-hero reveal">
-        <div class="feature-hero__icon">📸</div>
+        <div class="feature-hero__icon" aria-hidden="true">📸</div>
         <h1 class="feature-hero__title">Screenshots</h1>
         <p class="feature-hero__desc">See Power Scraper Pro in action. Click any screenshot to view it full size.</p>
       </div>
@@ -51,7 +77,7 @@
 
         <!-- Dashboard -->
         <div class="gallery-item reveal reveal--delay-1">
-          <img src="assets/screenshots/dashboard-library.png" alt="Library Overview Dashboard showing statistics, movies, TV shows, episodes, storage, and library health" class="gallery-item__img">
+          <img src="assets/screenshots/dashboard-library.png" alt="Library Overview Dashboard showing statistics, movies, TV shows, episodes, storage, and library health" class="gallery-item__img" loading="lazy">
           <div class="gallery-item__overlay">
             <span class="gallery-item__title">Library Dashboard</span>
           </div>
@@ -59,7 +85,7 @@
 
         <!-- Movies -->
         <div class="gallery-item reveal reveal--delay-2">
-          <img src="assets/screenshots/movies-dashboard.png" alt="Movies library view with poster grid and detailed movie information panel" class="gallery-item__img">
+          <img src="assets/screenshots/movies-dashboard.png" alt="Movies library view with poster grid and detailed movie information panel" class="gallery-item__img" loading="lazy">
           <div class="gallery-item__overlay">
             <span class="gallery-item__title">Movies Library</span>
           </div>
@@ -67,7 +93,7 @@
 
         <!-- TV Shows -->
         <div class="gallery-item reveal reveal--delay-3">
-          <img src="assets/screenshots/tv-dashboard.png" alt="TV Shows library with show posters, season tracking, and episode details" class="gallery-item__img">
+          <img src="assets/screenshots/tv-dashboard.png" alt="TV Shows library with show posters, season tracking, and episode details" class="gallery-item__img" loading="lazy">
           <div class="gallery-item__overlay">
             <span class="gallery-item__title">TV Shows Library</span>
           </div>
@@ -75,7 +101,7 @@
 
         <!-- Collections -->
         <div class="gallery-item reveal reveal--delay-1">
-          <img src="assets/screenshots/collections.png" alt="Collections view showing movie franchises with completeness tracking" class="gallery-item__img">
+          <img src="assets/screenshots/collections.png" alt="Collections view showing movie franchises with completeness tracking" class="gallery-item__img" loading="lazy">
           <div class="gallery-item__overlay">
             <span class="gallery-item__title">Collections</span>
           </div>
@@ -83,7 +109,7 @@
 
         <!-- Upcoming -->
         <div class="gallery-item reveal reveal--delay-2">
-          <img src="assets/screenshots/upcoming.png" alt="Upcoming releases view with movie and TV show release dates" class="gallery-item__img">
+          <img src="assets/screenshots/upcoming.png" alt="Upcoming releases view with movie and TV show release dates" class="gallery-item__img" loading="lazy">
           <div class="gallery-item__overlay">
             <span class="gallery-item__title">Upcoming Releases</span>
           </div>
@@ -91,7 +117,7 @@
 
         <!-- Artwork Settings -->
         <div class="gallery-item reveal reveal--delay-3">
-          <img src="assets/screenshots/settings-artwork.png" alt="Artwork settings with quality options and artwork type toggles" class="gallery-item__img">
+          <img src="assets/screenshots/settings-artwork.png" alt="Artwork settings with quality options and artwork type toggles" class="gallery-item__img" loading="lazy">
           <div class="gallery-item__overlay">
             <span class="gallery-item__title">Artwork Settings</span>
           </div>
@@ -99,7 +125,7 @@
 
         <!-- Cloud Sync -->
         <div class="gallery-item reveal reveal--delay-1">
-          <img src="assets/screenshots/settings-cloud-sync.png" alt="iCloud Sync settings with sync status and action buttons" class="gallery-item__img">
+          <img src="assets/screenshots/settings-cloud-sync.png" alt="iCloud Sync settings with sync status and action buttons" class="gallery-item__img" loading="lazy">
           <div class="gallery-item__overlay">
             <span class="gallery-item__title">iCloud Sync</span>
           </div>
@@ -107,7 +133,7 @@
 
         <!-- Rename & Rescrape -->
         <div class="gallery-item reveal reveal--delay-2">
-          <img src="assets/screenshots/rename-rescrape.png" alt="Rename and Rescrape dialog for correcting metadata matches" class="gallery-item__img">
+          <img src="assets/screenshots/rename-rescrape.png" alt="Rename and Rescrape dialog for correcting metadata matches" class="gallery-item__img" loading="lazy">
           <div class="gallery-item__overlay">
             <span class="gallery-item__title">Rename &amp; Rescrape</span>
           </div>
@@ -143,7 +169,7 @@
         <img src="assets/icons/app-icon.png" alt="Power Scraper Pro" class="footer__brand-icon">
         <span class="footer__brand-name">Power Scraper Pro</span>
       </div>
-      <p class="footer__copy">&copy; 2025 Power Scraper Pro. All rights reserved.</p>
+      <p class="footer__copy">&copy; 2026 Power Scraper Pro. All rights reserved.</p>
       <ul class="footer__links">
         <li><a href="features.html" class="footer__link">Features</a></li>
         <li><a href="screenshots.html" class="footer__link">Screenshots</a></li>
@@ -152,6 +178,13 @@
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js" defer></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js');
+      });
+    }
+  </script>
 </body>
 </html>
