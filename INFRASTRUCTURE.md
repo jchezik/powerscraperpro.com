@@ -111,8 +111,9 @@ curl -sI https://www.powerscraperpro.com | grep server
 **Project name:** `powerscraperpro`
 **Default domain:** `powerscraperpro.pages.dev`
 **Custom domain:** `www.powerscraperpro.com`
-**Git Provider:** None (direct upload via Wrangler CLI)
-**Deployment method:** `npx wrangler pages deploy .`
+**Deployment method:** GitHub Actions (automatic on push to `main`)
+**Fallback method:** `npx wrangler pages deploy .` (manual, if needed)
+**Account ID:** `187947f254be68306f576194a379b643`
 
 ### Cloudflare Dashboard Access
 
@@ -169,61 +170,50 @@ git remote -v
 
 ---
 
-## How to Deploy (Manual via Wrangler)
+## How to Deploy (Automatic — GitHub Actions)
 
-This is the current deployment method. No automatic deploys are configured.
+**Deploys are now fully automatic.** Every push to the `main` branch triggers a GitHub Actions workflow that deploys to Cloudflare Pages.
 
-### Prerequisites
+### How It Works
 
-- Node.js installed
-- Wrangler authenticated (`npx wrangler login`)
-- Working directory: `/Users/john/Desktop/Power Scraper Pro WebSite`
+```
+You edit files locally
+        │
+        ▼
+git add -A && git commit -m "message" && git push
+        │
+        ▼
+GitHub receives the push on `main` branch
+        │
+        ▼
+GitHub Actions runs `.github/workflows/deploy.yml`
+        │
+        ▼
+Wrangler deploys to Cloudflare Pages (powerscraperpro)
+        │
+        ▼
+Site is live at www.powerscraperpro.com (within ~30 seconds)
+```
 
-### Deploy Steps
+### Deploy Steps (Just Push!)
 
 ```bash
-# 1. Navigate to the website directory
 cd "/Users/john/Desktop/Power Scraper Pro WebSite"
-
-# 2. Deploy to Cloudflare Pages
-npx wrangler pages deploy . --project-name=powerscraperpro
-
-# 3. (Optional) Commit and push to GitHub for version control
 git add -A
 git commit -m "Description of changes"
 git push origin main
+# Done! GitHub Actions handles the rest automatically.
 ```
 
-### Important Notes
+### Check Deploy Status
 
-- The `_headers` file is automatically processed on deploy
-- The service worker cache version (`psp-v2` in `sw.js`) should be incremented on major changes
-- Deployment uploads only changed files (fast incremental deploys)
-- Previous deployments can be rolled back in the Cloudflare dashboard
+- Go to: https://github.com/jchezik/powerscraperpro.com/actions
+- You'll see each push listed with a green checkmark (success) or red X (failure)
+- Click any run to see deployment details and logs
 
----
+### GitHub Actions Workflow File
 
-## How to Set Up Automatic Deploys (GitHub → Cloudflare)
-
-If you want pushes to GitHub to automatically deploy to Cloudflare Pages:
-
-### Option A: Connect GitHub in Cloudflare Dashboard
-
-1. Go to Cloudflare Dashboard → Workers & Pages → powerscraperpro
-2. Click **Settings** → **Builds & deployments**
-3. Click **Connect to Git**
-4. Authorize Cloudflare to access the `jchezik/powerscraperpro.com` repository
-5. Configure:
-   - **Production branch:** `main`
-   - **Build command:** (leave empty - static site)
-   - **Build output directory:** `/` (root, since all files are at top level)
-6. Save
-
-After this, every `git push origin main` will automatically trigger a Cloudflare Pages deployment.
-
-### Option B: GitHub Actions (Alternative)
-
-Create `.github/workflows/deploy.yml`:
+Located at: `.github/workflows/deploy.yml`
 
 ```yaml
 name: Deploy to Cloudflare Pages
@@ -235,6 +225,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    name: Deploy
     steps:
       - uses: actions/checkout@v4
 
@@ -243,12 +234,67 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy . --project-name=powerscraperpro
 ```
 
-Required GitHub Secrets:
-- `CLOUDFLARE_API_TOKEN` - Create at: Cloudflare Dashboard → My Profile → API Tokens → Create Token → "Edit Cloudflare Workers" template
-- `CLOUDFLARE_ACCOUNT_ID` - Found in: Cloudflare Dashboard → right sidebar → Account ID
+### GitHub Repository Secrets
+
+These are stored encrypted in GitHub (Settings → Secrets → Actions):
+
+| Secret Name | Value | Purpose |
+|-------------|-------|---------|
+| `CLOUDFLARE_API_TOKEN` | (encrypted OAuth token) | Authenticates Wrangler to deploy |
+| `CLOUDFLARE_ACCOUNT_ID` | `187947f254be68306f576194a379b643` | Identifies which Cloudflare account |
+
+### Manual Deploy (Fallback Only)
+
+If GitHub Actions is down or you need to deploy without committing:
+
+```bash
+cd "/Users/john/Desktop/Power Scraper Pro WebSite"
+npx wrangler pages deploy . --project-name=powerscraperpro
+```
+
+### Important Notes
+
+- The `_headers` file is automatically processed on deploy
+- The service worker cache version (`psp-v2` in `sw.js`) should be incremented on major changes
+- Deployment uploads only changed files (fast incremental deploys)
+- Previous deployments can be rolled back in the Cloudflare dashboard
+- GitHub Actions logs: https://github.com/jchezik/powerscraperpro.com/actions
+
+---
+
+## Automatic Deploys (Already Configured)
+
+Automatic deploys via GitHub Actions are **already set up and working**.
+
+Every `git push origin main` automatically deploys to Cloudflare Pages.
+
+### If the Token Expires
+
+The Cloudflare API token may expire. If deploys start failing:
+
+1. On your Mac, run: `npx wrangler login` (this refreshes the token)
+2. Get the new token: `cat ~/Library/Preferences/.wrangler/config/default.toml`
+3. Copy the `oauth_token` value
+4. Update the GitHub secret:
+   ```bash
+   cd "/Users/john/Desktop/Power Scraper Pro WebSite"
+   gh secret set CLOUDFLARE_API_TOKEN --body "YOUR_NEW_TOKEN_HERE"
+   ```
+5. Push any commit to trigger a new deploy
+
+### If You Need to Recreate the Secrets from Scratch
+
+```bash
+cd "/Users/john/Desktop/Power Scraper Pro WebSite"
+
+# Set the Cloudflare Account ID
+gh secret set CLOUDFLARE_ACCOUNT_ID --body "187947f254be68306f576194a379b643"
+
+# Set the API token (get from Wrangler config after running `npx wrangler login`)
+gh secret set CLOUDFLARE_API_TOKEN --body "PASTE_OAUTH_TOKEN_HERE"
+```
 
 ---
 
@@ -335,6 +381,9 @@ If using A records for the apex domain, you can remove the forwarding rule since
 ├── sw.js                   # Service worker (cache strategies)
 ├── _headers                # Cloudflare custom headers (security, caching)
 ├── INFRASTRUCTURE.md       # This file
+├── .github/
+│   └── workflows/
+│       └── deploy.yml      # GitHub Actions: auto-deploy to Cloudflare on push
 ├── css/
 │   └── styles.css          # Complete design system (1300+ lines)
 ├── js/
