@@ -146,6 +146,9 @@ curl -sI https://www.powerscraperpro.com | grep server
 ### Commit History
 
 ```
+afd03b2 [Content] Convert to concept demo - remove all pricing and purchase UI
+2bcfc96 [Architecture] SEO, PWA, CSP hardening - complete best-practice overhaul
+a6cb53d [Docs] Complete INFRASTRUCTURE.md with architecture overhaul details & TOC fixes
 1892fd3 [CI] Add GitHub Actions auto-deploy to Cloudflare Pages
 7c1b011 [Docs] Add comprehensive infrastructure & deployment reference
 183b813 [Architecture] Complete CSS/JS/SW overhaul - best practices rewrite
@@ -490,7 +493,7 @@ Navigation failures → Serve /404.html from cache
 
 ### When to Increment Cache Version
 
-Change `psp-v4` to `psp-v4` (etc.) when:
+Change `psp-v4` to `psp-v5` (etc.) when:
 - Major CSS restructuring that could leave stale styles
 - JavaScript API changes
 - New pages added to precache list
