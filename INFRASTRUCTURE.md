@@ -264,7 +264,7 @@ npx wrangler pages deploy . --project-name=powerscraperpro
 ### Important Notes
 
 - The `_headers` file is automatically processed on deploy
-- The service worker cache version (`psp-v3` in `sw.js`) should be incremented on major changes
+- The service worker cache version (`psp-v4` in `sw.js`) should be incremented on major changes
 - Deployment uploads only changed files (fast incremental deploys)
 - Previous deployments can be rolled back in the Cloudflare dashboard
 - GitHub Actions logs: https://github.com/jchezik/powerscraperpro.com/actions
@@ -383,9 +383,9 @@ If using A records for the apex domain, you can remove the forwarding rule since
 ├── index.html              # Homepage (hero, features, stats, CTA)
 ├── features.html           # Full features page (200+ features detailed)
 ├── screenshots.html        # Gallery with lightbox
-├── download.html           # Buy page (€39.95, Paddle payment)
+├── download.html           # Coming Soon / Preview page (concept demo)
 ├── 404.html                # Custom 404 error page
-├── sw.js                   # Service worker (cache strategies, psp-v3)
+├── sw.js                   # Service worker (cache strategies, psp-v4)
 ├── manifest.json           # PWA manifest (installability, theme color)
 ├── sitemap.xml             # XML sitemap for search engine crawlers
 ├── robots.txt              # Crawler directives + sitemap reference
@@ -438,7 +438,7 @@ If using A records for the apex domain, you can remove the forwarding rule since
 
 - **HTML pages:** Network-first (always fetch fresh, cache as offline fallback)
 - **Static assets (CSS, JS, images):** Stale-while-revalidate (serve from cache immediately, update in background)
-- **Cache name:** `psp-v3` (increment on breaking changes to force re-cache)
+- **Cache name:** `psp-v4` (increment on breaking changes to force re-cache)
 - **Precached assets:** Only critical path (HTML pages, CSS, JS, icon) — not screenshots
 
 ---
@@ -476,7 +476,7 @@ All headers are configured in the `_headers` file and applied by Cloudflare:
 The service worker (`sw.js`) provides offline capability and performance:
 
 ```
-Cache name: psp-v3
+Cache name: psp-v4
 
 Precached (on install):
   /, /index.html, /features.html, /screenshots.html,
@@ -490,7 +490,7 @@ Navigation failures → Serve /404.html from cache
 
 ### When to Increment Cache Version
 
-Change `psp-v3` to `psp-v4` (etc.) when:
+Change `psp-v4` to `psp-v4` (etc.) when:
 - Major CSS restructuring that could leave stale styles
 - JavaScript API changes
 - New pages added to precache list
@@ -542,7 +542,7 @@ npx wrangler pages deploy . --project-name=powerscraperpro 2>&1
 
 ### Service worker serving stale content
 
-1. Increment cache version in `sw.js` (e.g., `psp-v2` → `psp-v3`)
+1. Increment cache version in `sw.js` (e.g., `psp-v2` → `psp-v4`)
 2. Redeploy
 3. Users will get new SW on next visit (skipWaiting + clients.claim)
 
@@ -642,7 +642,7 @@ Complete rewrite of CSS, JavaScript, and Service Worker for best-practice archit
 
 ### Service Worker Changes (`sw.js`)
 
-- Cache version bumped from `psp-v1` to `psp-v3`
+- Cache version bumped from `psp-v1` to `psp-v4`
 - HTML pages: network-first strategy (always try to fetch fresh, use cache only as offline fallback)
 - Static assets (CSS, JS, images): stale-while-revalidate (serve cached version instantly, update in background)
 - Removed heavy screenshot precaching (only critical path assets precached)
@@ -678,9 +678,23 @@ Complete rewrite of CSS, JavaScript, and Service Worker for best-practice archit
 - Added CSS classes: `.btn--full`, `.download-card__note`, `.hero--404`, `.hero__title--404`, `.hero__subtitle--404`
 - Hardened CSP: removed `'unsafe-inline'` from both `script-src` and `style-src`
 - CSP now uses SHA-256 hash for the SW registration inline script
-- Bumped service worker cache to `psp-v3`
+- Bumped service worker cache to `psp-v4`
 - Added `manifest.json` to SW precache list
 - Added `.json` to static asset caching regex
+
+### Concept Demo Conversion (January 24, 2026)
+
+- Removed ALL pricing text (€39.95) from every page
+- Removed ALL "Buy Now" buttons and purchase/checkout language
+- Replaced nav "Buy" link with "Preview" across all 5 pages
+- Replaced nav CTA "Buy Now" with "Coming Soon" across all pages
+- Replaced all CTA sections with "Coming Soon" messaging
+- Converted `download.html` from purchase page to "Coming Soon (Concept Demo)" preview
+- Removed JSON-LD pricing/offers from `index.html` and `download.html`
+- Removed OG `product:price` meta tags from `download.html`
+- Added disclaimer footer to ALL 5 pages: "Concept Demo — This website is a design prototype for demonstration purposes only. No movies or media are sold, licensed, streamed, or distributed."
+- Added CSS for `.footer__disclaimer`, `.footer__disclaimer-title`, `.footer__disclaimer-text`
+- Bumped service worker cache to `psp-v4`
 
 ---
 
