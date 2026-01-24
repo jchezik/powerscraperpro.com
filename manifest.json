@@ -1,0 +1,17 @@
+{
+  "name": "Power Scraper Pro",
+  "short_name": "PSP",
+  "description": "Professional Media Library Manager for macOS",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0e1a",
+  "theme_color": "#4f8ef7",
+  "icons": [
+    {
+      "src": "/assets/icons/app-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

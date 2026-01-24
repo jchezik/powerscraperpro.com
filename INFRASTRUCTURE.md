@@ -264,7 +264,7 @@ npx wrangler pages deploy . --project-name=powerscraperpro
 ### Important Notes
 
 - The `_headers` file is automatically processed on deploy
-- The service worker cache version (`psp-v2` in `sw.js`) should be incremented on major changes
+- The service worker cache version (`psp-v3` in `sw.js`) should be incremented on major changes
 - Deployment uploads only changed files (fast incremental deploys)
 - Previous deployments can be rolled back in the Cloudflare dashboard
 - GitHub Actions logs: https://github.com/jchezik/powerscraperpro.com/actions
@@ -385,19 +385,22 @@ If using A records for the apex domain, you can remove the forwarding rule since
 ├── screenshots.html        # Gallery with lightbox
 ├── download.html           # Buy page (€39.95, Paddle payment)
 ├── 404.html                # Custom 404 error page
-├── sw.js                   # Service worker (cache strategies)
+├── sw.js                   # Service worker (cache strategies, psp-v3)
+├── manifest.json           # PWA manifest (installability, theme color)
+├── sitemap.xml             # XML sitemap for search engine crawlers
+├── robots.txt              # Crawler directives + sitemap reference
 ├── _headers                # Cloudflare custom headers (security, caching)
 ├── INFRASTRUCTURE.md       # This file
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml      # GitHub Actions: auto-deploy to Cloudflare on push
 ├── css/
-│   └── styles.css          # Complete design system (1300+ lines)
+│   └── styles.css          # Complete design system (1350+ lines)
 ├── js/
 │   └── main.js             # Interactions (scroll, lightbox, particles, counters)
 └── assets/
     ├── icons/
-    │   └── app-icon.png    # App icon (favicon, nav, OG image)
+    │   └── app-icon.png    # App icon (favicon, nav, OG image, PWA icon)
     └── screenshots/
         ├── dashboard-library.png
         ├── movies-dashboard.png
@@ -435,7 +438,7 @@ If using A records for the apex domain, you can remove the forwarding rule since
 
 - **HTML pages:** Network-first (always fetch fresh, cache as offline fallback)
 - **Static assets (CSS, JS, images):** Stale-while-revalidate (serve from cache immediately, update in background)
-- **Cache name:** `psp-v2` (increment on breaking changes to force re-cache)
+- **Cache name:** `psp-v3` (increment on breaking changes to force re-cache)
 - **Precached assets:** Only critical path (HTML pages, CSS, JS, icon) — not screenshots
 
 ---
@@ -446,7 +449,7 @@ All headers are configured in the `_headers` file and applied by Cloudflare:
 
 | Header | Value | Purpose |
 |--------|-------|---------|
-| Content-Security-Policy | `default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'` | Restricts resource loading |
+| Content-Security-Policy | `default-src 'self'; script-src 'self' 'sha256-/g6NCkuLE0Xk1eOkWzoWJXD8csPiaUFaW8DsqQ32Dn0='; style-src 'self'; img-src 'self' data: https:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'` | Restricts resource loading (no unsafe-inline) |
 | Strict-Transport-Security | `max-age=31536000; includeSubDomains; preload` | Forces HTTPS for 1 year |
 | X-Content-Type-Options | `nosniff` | Prevents MIME sniffing |
 | X-Frame-Options | `DENY` | Prevents iframe embedding |
@@ -473,12 +476,12 @@ All headers are configured in the `_headers` file and applied by Cloudflare:
 The service worker (`sw.js`) provides offline capability and performance:
 
 ```
-Cache name: psp-v2
+Cache name: psp-v3
 
 Precached (on install):
   /, /index.html, /features.html, /screenshots.html,
   /download.html, /404.html, /css/styles.css,
-  /js/main.js, /assets/icons/app-icon.png
+  /js/main.js, /manifest.json, /assets/icons/app-icon.png
 
 HTML requests → Network-first (fresh content, cache fallback)
 Static assets → Stale-while-revalidate (instant from cache, update in background)
@@ -487,7 +490,7 @@ Navigation failures → Serve /404.html from cache
 
 ### When to Increment Cache Version
 
-Change `psp-v2` to `psp-v3` (etc.) when:
+Change `psp-v3` to `psp-v4` (etc.) when:
 - Major CSS restructuring that could leave stale styles
 - JavaScript API changes
 - New pages added to precache list
@@ -639,7 +642,7 @@ Complete rewrite of CSS, JavaScript, and Service Worker for best-practice archit
 
 ### Service Worker Changes (`sw.js`)
 
-- Cache version bumped from `psp-v1` to `psp-v2`
+- Cache version bumped from `psp-v1` to `psp-v3`
 - HTML pages: network-first strategy (always try to fetch fresh, use cache only as offline fallback)
 - Static assets (CSS, JS, images): stale-while-revalidate (serve cached version instantly, update in background)
 - Removed heavy screenshot precaching (only critical path assets precached)
@@ -648,7 +651,7 @@ Complete rewrite of CSS, JavaScript, and Service Worker for best-practice archit
 
 ### Security Headers (`_headers`)
 
-- Added full Content-Security-Policy (CSP)
+- Added full Content-Security-Policy (CSP) with SHA-256 hash (no unsafe-inline)
 - Added HSTS with `includeSubDomains` and `preload`
 - Added `X-XSS-Protection: 1; mode=block`
 - Added `Cross-Origin-Opener-Policy: same-origin`
@@ -661,6 +664,23 @@ Complete rewrite of CSS, JavaScript, and Service Worker for best-practice archit
 
 - `404.html`: Updated copyright year to 2026, added `defer` on script tag
 - `download.html`: Replaced inline price styles with CSS class
+
+### SEO & PWA Improvements (January 24, 2026)
+
+- Added `sitemap.xml` with all 4 pages, priorities, and lastmod dates
+- Added `robots.txt` with sitemap reference
+- Added `manifest.json` for PWA installability (name, theme color, icons)
+- Added `<link rel="manifest">` and `<meta name="theme-color">` to all 5 HTML pages
+- Added JSON-LD structured data (`SoftwareApplication`, `WebPage`, `BreadcrumbList`) to all pages
+- Fixed all OG/Twitter image URLs from bare domain to `www.powerscraperpro.com`
+- Fixed all canonical URLs to use `www.powerscraperpro.com`
+- Removed all remaining inline `style=""` attributes from `download.html` and `404.html`
+- Added CSS classes: `.btn--full`, `.download-card__note`, `.hero--404`, `.hero__title--404`, `.hero__subtitle--404`
+- Hardened CSP: removed `'unsafe-inline'` from both `script-src` and `style-src`
+- CSP now uses SHA-256 hash for the SW registration inline script
+- Bumped service worker cache to `psp-v3`
+- Added `manifest.json` to SW precache list
+- Added `.json` to static asset caching regex
 
 ---
 

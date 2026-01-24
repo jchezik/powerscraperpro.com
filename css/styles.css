@@ -1136,6 +1136,33 @@ body {
   margin: var(--space-4) 0;
 }
 
+.download-card__note {
+  text-align: center;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+.btn--full {
+  width: 100%;
+  justify-content: center;
+}
+
+/* --- 404 Page --- */
+.hero--404 {
+  min-height: 80vh;
+}
+
+.hero__title--404 {
+  font-size: 8rem;
+  margin-bottom: 1rem;
+}
+
+.hero__subtitle--404 {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
 /* --- Floating Particles (subtle) --- */
 .particles {
   position: absolute;

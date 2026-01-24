@@ -1,4 +1,4 @@
-const CACHE_NAME = 'psp-v2';
+const CACHE_NAME = 'psp-v3';
 
 const PRECACHE_ASSETS = [
   '/',
@@ -9,6 +9,7 @@ const PRECACHE_ASSETS = [
   '/404.html',
   '/css/styles.css',
   '/js/main.js',
+  '/manifest.json',
   '/assets/icons/app-icon.png'
 ];
 
@@ -88,7 +89,7 @@ self.addEventListener('fetch', (event) => {
         // No cache: fetch from network and cache
         return fetch(request).then((networkResponse) => {
           if (networkResponse && networkResponse.status === 200) {
-            const isStaticAsset = /\.(css|js|png|jpg|jpeg|gif|svg|ico|woff2?)$/i.test(url.pathname);
+            const isStaticAsset = /\.(css|js|json|png|jpg|jpeg|gif|svg|ico|woff2?)$/i.test(url.pathname);
             if (isStaticAsset) {
               const responseClone = networkResponse.clone();
               caches.open(CACHE_NAME).then((cache) => {
