@@ -1,19 +1,14 @@
-const CACHE_NAME = 'psp-v4';
+const CACHE_NAME = 'psp-v5';
 
 const PRECACHE_ASSETS = [
   '/',
   '/index.html',
-  '/features.html',
-  '/screenshots.html',
-  '/download.html',
-  '/404.html',
   '/css/styles.css',
   '/js/main.js',
   '/manifest.json',
   '/assets/icons/app-icon.png'
 ];
 
-// Install: precache critical assets only (not screenshots - they load lazily)
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -22,7 +17,6 @@ self.addEventListener('install', (event) => {
   );
 });
 
-// Activate: clean up old caches and claim clients
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys()
@@ -37,73 +31,41 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Fetch: Strategy depends on resource type
 self.addEventListener('fetch', (event) => {
   const { request } = event;
   const url = new URL(request.url);
 
-  // Only handle same-origin GET requests
   if (request.method !== 'GET' || url.origin !== self.location.origin) {
     return;
   }
 
-  // HTML pages: Network-first with cache fallback (always get fresh content)
+  // HTML: Network-first
   if (request.mode === 'navigate' || request.headers.get('accept')?.includes('text/html')) {
     event.respondWith(
       fetch(request)
         .then((response) => {
-          const responseClone = response.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(request, responseClone);
-          });
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
           return response;
         })
-        .catch(() => {
-          return caches.match(request).then((cached) => {
-            return cached || caches.match('/404.html');
-          });
-        })
+        .catch(() => caches.match(request).then((cached) => cached || caches.match('/')))
     );
     return;
   }
 
-  // Static assets (CSS, JS, images): Cache-first with network fallback
+  // Static assets: Stale-while-revalidate
   event.respondWith(
     caches.match(request)
-      .then((cachedResponse) => {
-        if (cachedResponse) {
-          // Stale-while-revalidate: serve cached, update in background
-          const fetchPromise = fetch(request).then((networkResponse) => {
-            if (networkResponse && networkResponse.status === 200) {
-              const responseClone = networkResponse.clone();
-              caches.open(CACHE_NAME).then((cache) => {
-                cache.put(request, responseClone);
-              });
-            }
-            return networkResponse;
-          }).catch(() => {});
-
-          return cachedResponse;
-        }
-
-        // No cache: fetch from network and cache
-        return fetch(request).then((networkResponse) => {
-          if (networkResponse && networkResponse.status === 200) {
-            const isStaticAsset = /\.(css|js|json|png|jpg|jpeg|gif|svg|ico|woff2?)$/i.test(url.pathname);
-            if (isStaticAsset) {
-              const responseClone = networkResponse.clone();
-              caches.open(CACHE_NAME).then((cache) => {
-                cache.put(request, responseClone);
-              });
-            }
+      .then((cached) => {
+        const fetchPromise = fetch(request).then((response) => {
+          if (response && response.status === 200) {
+            const clone = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
           }
-          return networkResponse;
-        });
-      })
-      .catch(() => {
-        if (request.mode === 'navigate') {
-          return caches.match('/404.html');
-        }
+          return response;
+        }).catch(() => cached);
+
+        return cached || fetchPromise;
       })
   );
 });

@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Power Scraper Pro - Professional Media Library Manager for macOS</title>
-  <meta name="description" content="The ultimate macOS app for organizing your media library. Automated metadata scraping, artwork downloads, and Kodi/Plex/Jellyfin/Emby support.">
-  <meta name="keywords" content="media scraper, kodi, plex, jellyfin, emby, metadata, nfo, artwork, macOS, movie organizer, tv show organizer">
+  <title>Power Scraper Pro — Professional Media Library Manager for macOS</title>
+  <meta name="description" content="Professional-grade metadata scraping, artwork management, and library organization for Kodi, Plex, Jellyfin, and Emby. Built natively for macOS.">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Power Scraper Pro - Professional Media Library Manager">
-  <meta property="og:description" content="The ultimate macOS app for organizing your media library with automated metadata scraping and multi-platform support.">
-  <meta property="og:image" content="https://www.powerscraperpro.com/assets/screenshots/dashboard-library.png">
+  <meta property="og:title" content="Power Scraper Pro — Professional Media Library Manager">
+  <meta property="og:description" content="Automated metadata scraping, artwork management, and library organization for macOS.">
+  <meta property="og:image" content="https://www.powerscraperpro.com/assets/screenshots/hero-dashboard.png">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.powerscraperpro.com/">
   <meta property="og:site_name" content="Power Scraper Pro">
@@ -19,23 +18,27 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Power Scraper Pro">
   <meta name="twitter:description" content="Professional Media Library Manager for macOS">
-  <meta name="twitter:image" content="https://www.powerscraperpro.com/assets/screenshots/dashboard-library.png">
+  <meta name="twitter:image" content="https://www.powerscraperpro.com/assets/screenshots/hero-dashboard.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/icons/app-icon.png">
   <link rel="apple-touch-icon" href="assets/icons/app-icon.png">
-
-  <!-- Preload critical assets -->
-  <link rel="preload" href="css/styles.css" as="style">
-  <link rel="preload" href="assets/icons/app-icon.png" as="image">
-  <link rel="preload" href="assets/screenshots/dashboard-library.png" as="image">
 
   <!-- Canonical -->
   <link rel="canonical" href="https://www.powerscraperpro.com/">
 
   <!-- Manifest -->
   <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#4f8ef7">
+  <meta name="theme-color" content="#0a0a0f">
+
+  <!-- Preload critical assets -->
+  <link rel="preload" href="css/styles.css" as="style">
+  <link rel="preload" href="assets/screenshots/hero-dashboard.png" as="image" fetchpriority="high">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/styles.css">
@@ -48,349 +51,278 @@
     "name": "Power Scraper Pro",
     "operatingSystem": "macOS",
     "applicationCategory": "MultimediaApplication",
-    "description": "Professional-grade metadata scraping, artwork management, and library organization for Kodi, Plex, Jellyfin, and Emby. Concept demo.",
+    "description": "Professional-grade metadata scraping, artwork management, and library organization for Kodi, Plex, Jellyfin, and Emby.",
     "url": "https://www.powerscraperpro.com/",
     "image": "https://www.powerscraperpro.com/assets/icons/app-icon.png",
-    "screenshot": "https://www.powerscraperpro.com/assets/screenshots/dashboard-library.png"
+    "screenshot": "https://www.powerscraperpro.com/assets/screenshots/hero-dashboard.png"
   }
   </script>
 </head>
 <body>
   <!-- Skip to content -->
-  <a href="#main-content" class="sr-only sr-only--focusable">Skip to main content</a>
+  <a href="#main" class="skip-link">Skip to main content</a>
 
   <!-- Navigation -->
-  <nav class="nav" role="navigation" aria-label="Main navigation">
-    <a href="index.html" class="nav__brand">
-      <img src="assets/icons/app-icon.png" alt="Power Scraper Pro" class="nav__brand-icon">
-      <span>Power Scraper Pro</span>
-    </a>
-
-    <ul class="nav__links">
-      <li><a href="index.html" class="nav__link nav__link--active">Home</a></li>
-      <li><a href="features.html" class="nav__link">Features</a></li>
-      <li><a href="screenshots.html" class="nav__link">Screenshots</a></li>
-      <li><a href="download.html" class="nav__link">Preview</a></li>
-    </ul>
-
-    <a href="download.html" class="nav__cta">
-      Coming Soon
-    </a>
-
-    <button class="nav__toggle" aria-label="Toggle navigation" aria-expanded="false">
-      <span class="nav__toggle-bar"></span>
-      <span class="nav__toggle-bar"></span>
-      <span class="nav__toggle-bar"></span>
-    </button>
-  </nav>
-
-  <!-- Hero Section -->
-  <main id="main-content">
-  <section class="hero">
-    <div class="particles"></div>
-    <div class="hero__bg-glow hero__bg-glow--1"></div>
-    <div class="hero__bg-glow hero__bg-glow--2"></div>
-    <div class="hero__bg-grid"></div>
-
-    <div class="hero__content">
-      <div class="hero__badge">
-        <span class="hero__badge-dot"></span>
-        macOS Native App
-      </div>
-
-      <h1 class="hero__title">
-        Your Media Library,<br>
-        <span class="hero__title-gradient">Perfectly Organized</span>
-      </h1>
-
-      <p class="hero__subtitle">
-        Professional-grade metadata scraping, artwork management, and library organization for Kodi, Plex, Jellyfin, and Emby. Built for macOS with Swift.
-      </p>
-
-      <div class="hero__actions">
-        <a href="features.html" class="btn btn--primary btn--large">
-          Explore Features
-        </a>
-        <a href="screenshots.html" class="btn btn--secondary btn--large">
-          View Screenshots
-        </a>
-      </div>
-
-      <div class="hero__screenshot">
-        <div class="hero__screenshot-glow"></div>
-        <img src="assets/screenshots/dashboard-library.png" alt="Power Scraper Pro Dashboard showing library overview with movies, TV shows, and health monitoring" class="hero__screenshot-img" width="1000" height="625" fetchpriority="high">
-      </div>
-    </div>
-  </section>
-
-  <!-- Platform Support -->
-  <div class="platforms reveal">
-    <div class="platform-badge">
-      <span class="platform-badge__icon" aria-hidden="true">🎬</span>
-      Kodi
-    </div>
-    <div class="platform-badge">
-      <span class="platform-badge__icon" aria-hidden="true">📺</span>
-      Plex
-    </div>
-    <div class="platform-badge">
-      <span class="platform-badge__icon" aria-hidden="true">🎞️</span>
-      Jellyfin
-    </div>
-    <div class="platform-badge">
-      <span class="platform-badge__icon" aria-hidden="true">📡</span>
-      Emby
-    </div>
-  </div>
-
-  <!-- Stats -->
-  <div class="stats">
-    <div class="stat reveal reveal--delay-1">
-      <div class="stat__number" data-count="22+">0</div>
-      <div class="stat__label">Artwork Types</div>
-    </div>
-    <div class="stat reveal reveal--delay-2">
-      <div class="stat__number" data-count="200+">0</div>
-      <div class="stat__label">Features</div>
-    </div>
-    <div class="stat reveal reveal--delay-3">
-      <div class="stat__number" data-count="76">0</div>
-      <div class="stat__label">Settings</div>
-    </div>
-    <div class="stat reveal reveal--delay-4">
-      <div class="stat__number" data-count="4">0</div>
-      <div class="stat__label">Platforms</div>
-    </div>
-  </div>
-
-  <!-- Core Features Section -->
-  <section class="section" id="features">
-    <div class="container">
-      <div class="section__header reveal">
-        <span class="section__label">Core Features</span>
-        <h2 class="section__title">Everything Your Library Needs</h2>
-        <p class="section__subtitle">From automated scraping to complete library health monitoring, Power Scraper Pro handles it all.</p>
-      </div>
-
-      <div class="features-grid">
-        <!-- Feature 1 -->
-        <div class="feature-card reveal reveal--delay-1">
-          <div class="feature-card__icon" aria-hidden="true">🎯</div>
-          <h3 class="feature-card__title">Automated Scraping</h3>
-          <p class="feature-card__desc">10-step atomic pipeline for movies and TV shows. Intelligent matching with fuzzy title comparison, year validation, and confidence scoring.</p>
-          <ul class="feature-card__list">
-            <li>TMDB & Fanart.TV integration</li>
-            <li>Batch processing with pause/resume</li>
-            <li>Background scraping with notifications</li>
-            <li>Retry mechanisms for failed items</li>
-          </ul>
-        </div>
-
-        <!-- Feature 2 -->
-        <div class="feature-card reveal reveal--delay-2">
-          <div class="feature-card__icon" aria-hidden="true">🖼️</div>
-          <h3 class="feature-card__title">22 Artwork Types</h3>
-          <p class="feature-card__desc">Comprehensive artwork management with dual-source strategy. Posters, fanart, banners, clearlogos, disc art, season posters, and more.</p>
-          <ul class="feature-card__list">
-            <li>SD, HD, and Original quality</li>
-            <li>Fanart.TV + TMDB sources</li>
-            <li>Per-season and per-episode art</li>
-            <li>Collection artwork support</li>
-          </ul>
-        </div>
-
-        <!-- Feature 3 -->
-        <div class="feature-card reveal reveal--delay-3">
-          <div class="feature-card__icon" aria-hidden="true">🛡️</div>
-          <h3 class="feature-card__title">Safe Mode</h3>
-          <p class="feature-card__desc">Non-destructive library organization using hardlinks. Zero additional disk space, original files remain untouched in their download location.</p>
-          <ul class="feature-card__list">
-            <li>Hardlink-based organization</li>
-            <li>Cross-volume copy fallback</li>
-            <li>Library cleanup without data loss</li>
-            <li>Link type tracking</li>
-          </ul>
-        </div>
-
-        <!-- Feature 4 -->
-        <div class="feature-card reveal reveal--delay-1">
-          <div class="feature-card__icon" aria-hidden="true">📋</div>
-          <h3 class="feature-card__title">NFO Generation</h3>
-          <p class="feature-card__desc">Complete Kodi-compliant XML metadata files with cast, crew, ratings, trailers, collections, and media info tags for movies, shows, and episodes.</p>
-          <ul class="feature-card__list">
-            <li>Movie, show, and episode NFOs</li>
-            <li>Cast & crew with photos</li>
-            <li>Media info (codec, HDR, audio)</li>
-            <li>Platform-specific output</li>
-          </ul>
-        </div>
-
-        <!-- Feature 5 -->
-        <div class="feature-card reveal reveal--delay-2">
-          <div class="feature-card__icon" aria-hidden="true">📂</div>
-          <h3 class="feature-card__title">Watch Folders</h3>
-          <p class="feature-card__desc">Set up monitored folders that automatically detect and scrape new media. FSEvents-based monitoring with file stability checking.</p>
-          <ul class="feature-card__list">
-            <li>Multiple folders with individual settings</li>
-            <li>Auto-start scraping on detection</li>
-            <li>Configurable output destinations</li>
-            <li>File copy completion detection</li>
-          </ul>
-        </div>
-
-        <!-- Feature 6 -->
-        <div class="feature-card reveal reveal--delay-3">
-          <div class="feature-card__icon" aria-hidden="true">🏥</div>
-          <h3 class="feature-card__title">Library Health</h3>
-          <p class="feature-card__desc">Comprehensive health monitoring with missing artwork detection, orphaned files, broken hardlinks, duplicates, and missing episode tracking.</p>
-          <ul class="feature-card__list">
-            <li>Issue severity classification</li>
-            <li>Missing episode detection</li>
-            <li>Duplicate resolution UI</li>
-            <li>One-click issue resolution</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Showcase: Library Dashboard -->
-  <section class="section section--alt">
-    <div class="container container--wide">
-      <div class="showcase">
-        <div class="showcase__item reveal">
-          <div class="showcase__grid">
-            <div class="showcase__content">
-              <span class="showcase__label">Dashboard</span>
-              <h3 class="showcase__title">Complete Library Overview</h3>
-              <p class="showcase__desc">See everything at a glance - total movies, TV shows, episodes, storage used, library health score, missing episodes, and upcoming releases all in one beautiful dashboard.</p>
-              <a href="features.html" class="btn btn--secondary">Learn More</a>
-            </div>
-            <div class="showcase__image">
-              <img src="assets/screenshots/dashboard-library.png" alt="Library Dashboard" class="showcase__img" loading="lazy" width="600" height="375">
-            </div>
-          </div>
-        </div>
-
-        <div class="showcase__item reveal">
-          <div class="showcase__grid">
-            <div class="showcase__content">
-              <span class="showcase__label">Movies</span>
-              <h3 class="showcase__title">Beautiful Movie Library</h3>
-              <p class="showcase__desc">Browse your movies in a stunning grid with poster artwork, resolution badges, and detailed metadata. Click any movie for full details including cast, crew, technical specs, and trailer access.</p>
-              <a href="screenshots.html" class="btn btn--secondary">See Screenshots</a>
-            </div>
-            <div class="showcase__image">
-              <img src="assets/screenshots/movies-dashboard.png" alt="Movies Dashboard" class="showcase__img" loading="lazy" width="600" height="375">
-            </div>
-          </div>
-        </div>
-
-        <div class="showcase__item reveal">
-          <div class="showcase__grid">
-            <div class="showcase__content">
-              <span class="showcase__label">TV Shows</span>
-              <h3 class="showcase__title">Organized TV Library</h3>
-              <p class="showcase__desc">Full TV show management with season-level tracking, episode completion percentages, missing episode detection, and per-season artwork. Support for specials, multi-episode files, and date-based shows.</p>
-              <a href="screenshots.html" class="btn btn--secondary">See Screenshots</a>
-            </div>
-            <div class="showcase__image">
-              <img src="assets/screenshots/tv-dashboard.png" alt="TV Shows Dashboard" class="showcase__img" loading="lazy" width="600" height="375">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- More Features Section -->
-  <section class="section">
-    <div class="container">
-      <div class="section__header reveal">
-        <span class="section__label">And More</span>
-        <h2 class="section__title">Built for Power Users</h2>
-        <p class="section__subtitle">Advanced features for complete control over your media library.</p>
-      </div>
-
-      <div class="features-grid">
-        <div class="feature-card reveal reveal--delay-1">
-          <div class="feature-card__icon" aria-hidden="true">☁️</div>
-          <h3 class="feature-card__title">iCloud Sync</h3>
-          <p class="feature-card__desc">Sync settings across all your Macs with iCloud. API keys stay secure in your local Keychain and are never synced.</p>
-        </div>
-
-        <div class="feature-card reveal reveal--delay-2">
-          <div class="feature-card__icon" aria-hidden="true">🎬</div>
-          <h3 class="feature-card__title">Collections</h3>
-          <p class="feature-card__desc">Automatic collection detection from TMDB with completeness tracking. See what movies you're missing from any franchise.</p>
-        </div>
-
-        <div class="feature-card reveal reveal--delay-3">
-          <div class="feature-card__icon" aria-hidden="true">📅</div>
-          <h3 class="feature-card__title">Upcoming Releases</h3>
-          <p class="feature-card__desc">Track upcoming movies and TV episodes from your library shows. Never miss a new season or sequel release.</p>
-        </div>
-
-        <div class="feature-card reveal reveal--delay-1">
-          <div class="feature-card__icon" aria-hidden="true">🔄</div>
-          <h3 class="feature-card__title">Rename & Rescrape</h3>
-          <p class="feature-card__desc">One-click rename and rescrape for incorrectly matched items. Manual TMDB/TVDB ID entry for precise matching.</p>
-        </div>
-
-        <div class="feature-card reveal reveal--delay-2">
-          <div class="feature-card__icon" aria-hidden="true">💾</div>
-          <h3 class="feature-card__title">Auto Backups</h3>
-          <p class="feature-card__desc">Automatic database backups before scraping, on launch, and on quit. Configurable retention with one-click restore.</p>
-        </div>
-
-        <div class="feature-card reveal reveal--delay-3">
-          <div class="feature-card__icon" aria-hidden="true">⚡</div>
-          <h3 class="feature-card__title">GPU Accelerated</h3>
-          <p class="feature-card__desc">Metal-powered thumbnail generation with intelligent caching. Adaptive batch sizing based on memory pressure and thermal state.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="cta-section">
-    <div class="cta-section__bg"></div>
-    <h2 class="cta-section__title reveal">Coming Soon</h2>
-    <p class="cta-section__subtitle reveal reveal--delay-1">Power Scraper Pro is currently in development. Stay tuned for updates.</p>
-    <div class="reveal reveal--delay-2">
-      <a href="features.html" class="btn btn--primary btn--large">
-        Explore the Concept
+  <header class="header" role="banner">
+    <nav class="nav" aria-label="Main navigation">
+      <a href="/" class="nav__brand" aria-label="Power Scraper Pro home">
+        <img src="assets/icons/app-icon.png" alt="" class="nav__icon" width="32" height="32">
+        <span class="nav__wordmark">Power Scraper Pro</span>
       </a>
+
+      <div class="nav__links" role="list">
+        <a href="#features" class="nav__link" role="listitem">Features</a>
+        <a href="#screenshots" class="nav__link" role="listitem">Screenshots</a>
+        <a href="#platforms" class="nav__link" role="listitem">Platforms</a>
+      </div>
+
+      <div class="nav__actions">
+        <span class="nav__status">Coming Soon</span>
+      </div>
+
+      <button class="nav__mobile-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" aria-hidden="true" role="dialog" aria-label="Mobile navigation">
+    <div class="mobile-menu__inner">
+      <a href="#features" class="mobile-menu__link">Features</a>
+      <a href="#screenshots" class="mobile-menu__link">Screenshots</a>
+      <a href="#platforms" class="mobile-menu__link">Platforms</a>
+      <span class="mobile-menu__status">Coming Soon</span>
     </div>
-  </section>
+  </div>
+
+  <main id="main">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero__ambient"></div>
+      <div class="hero__content">
+        <p class="hero__eyebrow">Native macOS Application</p>
+        <h1 class="hero__title">Your Media Library,<br><span class="hero__title--accent">Perfected</span></h1>
+        <p class="hero__subtitle">Automated metadata scraping, artwork management, and library organization for Kodi, Plex, Jellyfin, and Emby.</p>
+      </div>
+      <div class="hero__screenshot">
+        <div class="hero__screenshot-frame">
+          <img src="assets/screenshots/hero-dashboard.png" alt="Power Scraper Pro dashboard showing library overview with movies, TV shows, and storage statistics" width="1932" height="1422" class="hero__img" fetchpriority="high" draggable="false">
+        </div>
+        <div class="hero__screenshot-glow"></div>
+      </div>
+      <div class="hero__fade"></div>
+    </section>
+
+    <!-- Features -->
+    <section class="features" id="features">
+      <div class="container">
+        <header class="section-header">
+          <p class="section-header__label">Features</p>
+          <h2 class="section-header__title">Everything your library needs</h2>
+        </header>
+
+        <div class="features__grid">
+          <article class="feature-card" data-reveal>
+            <div class="feature-card__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="m11 8v6M8 11h6"/></svg>
+            </div>
+            <h3 class="feature-card__title">Automated Scraping</h3>
+            <p class="feature-card__desc">10-step atomic pipeline with fuzzy matching, year validation, and confidence scoring. TMDB and Fanart.TV integration with batch processing.</p>
+          </article>
+
+          <article class="feature-card" data-reveal>
+            <div class="feature-card__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+            </div>
+            <h3 class="feature-card__title">22 Artwork Types</h3>
+            <p class="feature-card__desc">Posters, fanart, banners, clearlogos, disc art, season artwork, and more. Dual-source strategy with SD, HD, and Original quality options.</p>
+          </article>
+
+          <article class="feature-card" data-reveal>
+            <div class="feature-card__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <h3 class="feature-card__title">Safe Mode</h3>
+            <p class="feature-card__desc">Non-destructive organization using hardlinks. Zero additional disk space consumed — your original files remain untouched.</p>
+          </article>
+
+          <article class="feature-card" data-reveal>
+            <div class="feature-card__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 12h4M10 16h4M10 8h1"/></svg>
+            </div>
+            <h3 class="feature-card__title">NFO Generation</h3>
+            <p class="feature-card__desc">Complete Kodi-compliant XML metadata with cast, crew, ratings, trailers, collections, and media info for every item.</p>
+          </article>
+
+          <article class="feature-card" data-reveal>
+            <div class="feature-card__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/><path d="M12 10v6M9 13h6"/></svg>
+            </div>
+            <h3 class="feature-card__title">Watch Folders</h3>
+            <p class="feature-card__desc">FSEvents-based monitoring that detects new media instantly. Auto-scrape with configurable destinations and stability checking.</p>
+          </article>
+
+          <article class="feature-card" data-reveal>
+            <div class="feature-card__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <h3 class="feature-card__title">Library Health</h3>
+            <p class="feature-card__desc">Missing artwork, orphaned files, broken hardlinks, duplicates, and missing episodes — all detected and resolvable in one click.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Showcase: Screenshots -->
+    <section class="showcase" id="screenshots">
+      <div class="container">
+        <header class="section-header">
+          <p class="section-header__label">In Action</p>
+          <h2 class="section-header__title">See it for yourself</h2>
+        </header>
+
+        <!-- Movie Detail -->
+        <div class="showcase__item" data-reveal>
+          <div class="showcase__text">
+            <h3 class="showcase__title">Rich Movie Detail</h3>
+            <p class="showcase__desc">Browse your library with stunning poster artwork. Click any title for full metadata, cast information, technical specs, and one-click artwork changes.</p>
+          </div>
+          <div class="showcase__image">
+            <img src="assets/screenshots/movie-detail.png" alt="Movie detail view showing Ready Player One with metadata, synopsis, and poster grid" loading="lazy" width="1769" height="1131" draggable="false">
+          </div>
+        </div>
+
+        <!-- TV Grid -->
+        <div class="showcase__item showcase__item--reverse" data-reveal>
+          <div class="showcase__text">
+            <h3 class="showcase__title">TV Show Management</h3>
+            <p class="showcase__desc">Grid view with season tracking, episode completion, missing episode detection, and per-show detail panels with all metadata at your fingertips.</p>
+          </div>
+          <div class="showcase__image">
+            <img src="assets/screenshots/tv-grid-detail.png" alt="TV shows grid view with Vikings detail panel showing seasons and missing episodes" loading="lazy" width="2310" height="1369" draggable="false">
+          </div>
+        </div>
+
+        <!-- Poster Selector -->
+        <div class="showcase__item" data-reveal>
+          <div class="showcase__text">
+            <h3 class="showcase__title">Artwork Selection</h3>
+            <p class="showcase__desc">Choose from dozens of poster and fanart options pulled from TMDB and Fanart.TV. Preview at full resolution before applying to your library.</p>
+          </div>
+          <div class="showcase__image">
+            <img src="assets/screenshots/poster-selector.png" alt="Poster selection interface showing multiple artwork options for Ready Player One" loading="lazy" width="1769" height="1131" draggable="false">
+          </div>
+        </div>
+
+        <!-- Upcoming Releases -->
+        <div class="showcase__item showcase__item--reverse" data-reveal>
+          <div class="showcase__text">
+            <h3 class="showcase__title">Upcoming Releases</h3>
+            <p class="showcase__desc">Track upcoming movies and returning TV series from your library. Never miss a sequel, new season, or franchise continuation.</p>
+          </div>
+          <div class="showcase__image">
+            <img src="assets/screenshots/upcoming-releases.png" alt="Upcoming releases view showing movies and returning TV series with release dates" loading="lazy" width="1932" height="1422" draggable="false">
+          </div>
+        </div>
+
+        <!-- Collections -->
+        <div class="showcase__item" data-reveal>
+          <div class="showcase__text">
+            <h3 class="showcase__title">Collection Tracking</h3>
+            <p class="showcase__desc">Automatic franchise detection with completeness percentages. Instantly see which movies you're missing from any collection.</p>
+          </div>
+          <div class="showcase__image showcase__image--compact">
+            <img src="assets/screenshots/collections.png" alt="Collection completeness view showing Despicable Me, Minions, and Mortal Kombat collections with progress bars" loading="lazy" width="684" height="700" draggable="false">
+          </div>
+        </div>
+
+        <!-- Library Verify -->
+        <div class="showcase__item showcase__item--reverse" data-reveal>
+          <div class="showcase__text">
+            <h3 class="showcase__title">Library Verification</h3>
+            <p class="showcase__desc">One-click health scan confirms your library is in perfect shape. Identifies issues with files, metadata, artwork, and folder structure.</p>
+          </div>
+          <div class="showcase__image">
+            <img src="assets/screenshots/verify-library.png" alt="Library verification complete showing green checkmark and healthy status" loading="lazy" width="1769" height="1131" draggable="false">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Platforms -->
+    <section class="platforms" id="platforms">
+      <div class="container">
+        <header class="section-header">
+          <p class="section-header__label">Compatibility</p>
+          <h2 class="section-header__title">Works with your media server</h2>
+        </header>
+
+        <div class="platforms__grid" data-reveal>
+          <div class="platform-card">
+            <div class="platform-card__icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            </div>
+            <h3 class="platform-card__name">Kodi</h3>
+            <p class="platform-card__desc">Full NFO and artwork support</p>
+          </div>
+          <div class="platform-card">
+            <div class="platform-card__icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            </div>
+            <h3 class="platform-card__name">Plex</h3>
+            <p class="platform-card__desc">Metadata and artwork naming</p>
+          </div>
+          <div class="platform-card">
+            <div class="platform-card__icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            </div>
+            <h3 class="platform-card__name">Jellyfin</h3>
+            <p class="platform-card__desc">Compatible folder structure</p>
+          </div>
+          <div class="platform-card">
+            <div class="platform-card__icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            </div>
+            <h3 class="platform-card__name">Emby</h3>
+            <p class="platform-card__desc">Full metadata integration</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <div class="container">
+        <div class="cta__inner" data-reveal>
+          <h2 class="cta__title">Coming Soon</h2>
+          <p class="cta__desc">Power Scraper Pro is currently in development.<br>A native macOS app for serious media collectors.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="footer__content">
-      <div class="footer__brand">
-        <img src="assets/icons/app-icon.png" alt="Power Scraper Pro" class="footer__brand-icon">
-        <span class="footer__brand-name">Power Scraper Pro</span>
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <img src="assets/icons/app-icon.png" alt="" width="24" height="24" class="footer__icon">
+          <span class="footer__name">Power Scraper Pro</span>
+        </div>
+        <p class="footer__copy">&copy; 2026 Power Scraper Pro. All rights reserved.</p>
+        <p class="footer__disclaimer">Concept Demo — This website is a design prototype for demonstration purposes.</p>
       </div>
-      <p class="footer__copy">&copy; 2026 Power Scraper Pro. All rights reserved.</p>
-      <ul class="footer__links">
-        <li><a href="features.html" class="footer__link">Features</a></li>
-        <li><a href="screenshots.html" class="footer__link">Screenshots</a></li>
-        <li><a href="download.html" class="footer__link">Preview</a></li>
-      </ul>
-    </div>
-    <div class="footer__disclaimer">
-      <p class="footer__disclaimer-title">Concept Demo</p>
-      <p class="footer__disclaimer-text">This website is a design prototype for demonstration purposes only. No movies or media are sold, licensed, streamed, or distributed.</p>
     </div>
   </footer>
 
-  </main>
   <script src="js/main.js" defer></script>
   <script>
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/sw.js');
-      });
+      window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
     }
   </script>
 </body>

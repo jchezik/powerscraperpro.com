@@ -4,8 +4,8 @@
   "description": "Professional Media Library Manager for macOS",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0a0e1a",
-  "theme_color": "#4f8ef7",
+  "background_color": "#050507",
+  "theme_color": "#050507",
   "icons": [
     {
       "src": "/assets/icons/app-icon.png",
