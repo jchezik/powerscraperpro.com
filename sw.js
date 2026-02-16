@@ -1,12 +1,14 @@
-const CACHE_NAME = 'psp-v16';
+const CACHE_NAME = 'psp-v17';
 
 const PRECACHE_ASSETS = [
   '/',
   '/index.html',
   '/css/styles.css',
   '/css/chat-widget.css',
+  '/css/lightbox.css',
   '/js/main.js',
   '/js/chat-widget.js',
+  '/js/lightbox.js',
   '/manifest.json',
   '/assets/icons/app-icon.png'
 ];

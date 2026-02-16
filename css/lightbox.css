@@ -1,0 +1,186 @@
+/* ===== POWER SCRAPER PRO LIGHTBOX ===== */
+
+/* Lightbox Overlay */
+.psp-lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 10000; /* Above chat widget (z-index: 9999) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 200ms cubic-bezier(0.4, 0.0, 0.2, 1), 
+              visibility 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
+  cursor: pointer;
+  padding: env(safe-area-inset-top, 20px) env(safe-area-inset-right, 20px) env(safe-area-inset-bottom, 20px) env(safe-area-inset-left, 20px);
+  touch-action: manipulation;
+}
+
+.psp-lightbox.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Lightbox Content Container */
+.psp-lightbox__content {
+  position: relative;
+  max-width: 80vw;
+  max-height: 80vh;
+  transform: scale(0.95);
+  transition: transform 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
+  cursor: default;
+  touch-action: pinch-zoom;
+}
+
+.psp-lightbox.is-active .psp-lightbox__content {
+  transform: scale(1);
+}
+
+/* Lightbox Image */
+.psp-lightbox__image {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;
+}
+
+/* Screenshot Hover Effects */
+.showcase__image img {
+  transition: filter 300ms ease, transform 300ms ease;
+  cursor: pointer;
+}
+
+.showcase__image:hover img {
+  filter: brightness(1.1);
+  transform: scale(1.02);
+}
+
+.showcase__image::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  transition: all 300ms ease;
+  background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 9h6v6h-6z"/><path d="M21 15V9a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+
+.showcase__image:hover::after {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+/* Tablet Styles */
+@media (max-width: 1024px) {
+  .psp-lightbox__content {
+    max-width: 90vw;
+    max-height: 90vh;
+  }
+  
+  .psp-lightbox {
+    padding: env(safe-area-inset-top, 15px) env(safe-area-inset-right, 15px) env(safe-area-inset-bottom, 15px) env(safe-area-inset-left, 15px);
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .psp-lightbox__content {
+    max-width: calc(100vw - 40px);
+    max-height: calc(100vh - 80px);
+  }
+  
+  .psp-lightbox {
+    padding: env(safe-area-inset-top, 20px) env(safe-area-inset-right, 20px) calc(env(safe-area-inset-bottom, 20px) + 20px) env(safe-area-inset-left, 20px);
+  }
+  
+  /* Hide hover effects on mobile */
+  .showcase__image::after {
+    display: none;
+  }
+  
+  .showcase__image:hover img {
+    filter: none;
+    transform: none;
+  }
+}
+
+/* Small Mobile Styles */
+@media (max-width: 480px) {
+  .psp-lightbox__content {
+    max-width: calc(100vw - 24px);
+    max-height: calc(100vh - 48px);
+  }
+  
+  .psp-lightbox {
+    padding: env(safe-area-inset-top, 12px) env(safe-area-inset-right, 12px) calc(env(safe-area-inset-bottom, 12px) + 12px) env(safe-area-inset-left, 12px);
+  }
+  
+  .psp-lightbox__image {
+    border-radius: 8px;
+  }
+}
+
+/* Handle portrait vs landscape on mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .psp-lightbox__content {
+    max-width: calc(100vw - 24px);
+    max-height: calc(100vh - 24px);
+  }
+  
+  .psp-lightbox {
+    padding: env(safe-area-inset-top, 12px) env(safe-area-inset-right, 12px) env(safe-area-inset-bottom, 12px) env(safe-area-inset-left, 12px);
+  }
+}
+
+/* Ensure proper positioning for showcase images */
+.showcase__image {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Prevent body scroll when lightbox is open */
+body.psp-lightbox-open {
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .psp-lightbox,
+  .psp-lightbox__content,
+  .showcase__image img,
+  .showcase__image::after {
+    transition: none;
+  }
+  
+  .psp-lightbox__content {
+    transform: none;
+  }
+  
+  .psp-lightbox.is-active .psp-lightbox__content {
+    transform: none;
+  }
+}
