@@ -140,7 +140,7 @@
       // Show loading state
       submitBtn.disabled = true;
       btnText.style.display = 'none';
-      btnLoading.style.display = 'inline-flex';
+      btnLoading.classList.add('is-visible');
 
       try {
         const response = await fetch('/api/waitlist', {
@@ -169,7 +169,7 @@
       // Reset button state (only on error — success hides the form)
       submitBtn.disabled = false;
       btnText.style.display = 'inline';
-      btnLoading.style.display = 'none';
+      btnLoading.classList.remove('is-visible');
     });
   }
 })();

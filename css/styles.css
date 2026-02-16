@@ -998,6 +998,14 @@
     transform: none;
   }
 
+  .waitlist-form__btn-loading {
+    display: none;
+  }
+
+  .waitlist-form__btn-loading.is-visible {
+    display: inline-flex;
+  }
+
   .waitlist-form__btn-loading svg {
     animation: spin 1s linear infinite;
   }
