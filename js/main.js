@@ -156,7 +156,7 @@
         if (response.ok) {
           // Success - hide form entirely, show success message
           waitlistForm.style.display = 'none';
-          waitlistSuccess.style.display = 'block';
+          waitlistSuccess.classList.add('is-visible');
           return; // Don't reset button — form is hidden
         } else {
           // Error - show inline error, reset button

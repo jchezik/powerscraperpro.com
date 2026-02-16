@@ -1015,12 +1015,17 @@
   }
 
   .waitlist-success {
+    display: none;
     text-align: center;
     padding: var(--space-4);
     background: rgba(34, 197, 94, 0.1);
     border: 1px solid rgba(34, 197, 94, 0.2);
     border-radius: var(--radius-md);
     margin-bottom: var(--space-4);
+  }
+
+  .waitlist-success.is-visible {
+    display: block;
   }
 
   .waitlist-success__text {
