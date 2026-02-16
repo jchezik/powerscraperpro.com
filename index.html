@@ -216,8 +216,8 @@
             <div class="step__icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/><path d="M12 10v6M9 13h6"/></svg>
             </div>
-            <h3 class="step__title">Add Your Media</h3>
-            <p class="step__desc">Point Power Scraper Pro at your movie and TV show folders. It automatically detects and catalogs everything.</p>
+            <h3 class="step__title">Point at your folders</h3>
+            <p class="step__desc">Drop in your messy downloads, renamed files, anything. Power Scraper Pro detects movies and TV shows regardless of naming.</p>
           </article>
 
           <article class="step">
@@ -225,8 +225,8 @@
             <div class="step__icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
             </div>
-            <h3 class="step__title">Scrape &amp; Match</h3>
-            <p class="step__desc">Our 10-step pipeline matches each title with TMDB and Fanart.TV, downloading metadata, artwork, and subtitles.</p>
+            <h3 class="step__title">10-step atomic pipeline</h3>
+            <p class="step__desc">Fuzzy matching, year validation, confidence scoring. Dual-source artwork from TMDB and Fanart.TV. Safe Mode preserves your originals using hardlinks.</p>
           </article>
 
           <article class="step">
@@ -234,8 +234,8 @@
             <div class="step__icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
             </div>
-            <h3 class="step__title">Enjoy Your Library</h3>
-            <p class="step__desc">Perfectly organized folders, NFO files, and artwork — ready for Kodi, Plex, Jellyfin, or Emby.</p>
+            <h3 class="step__title">Every server, instantly ready</h3>
+            <p class="step__desc">NFO metadata, 22 artwork types, proper folder structure — pick Kodi, Plex, Jellyfin, or Emby and it just works.</p>
           </article>
         </div>
       </div>
@@ -346,28 +346,52 @@
         <div class="platforms__grid" data-reveal>
           <div class="platform-card">
             <div class="platform-card__icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              <!-- Kodi: Blue rounded square with stylized K -->
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <rect x="4" y="4" width="40" height="40" rx="8" fill="#17B2E7"/>
+                <path d="M16 14h4v20h-4V14zm8 0h3l6 10-6 10h-3l6-10-6-10z" fill="white"/>
+              </svg>
             </div>
             <h3 class="platform-card__name">Kodi</h3>
             <p class="platform-card__desc">Full NFO and artwork support</p>
           </div>
           <div class="platform-card">
             <div class="platform-card__icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              <!-- Plex: Orange play button triangle -->
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <circle cx="24" cy="24" r="20" fill="#E5A00D"/>
+                <path d="M18 16l16 8-16 8V16z" fill="white"/>
+              </svg>
             </div>
             <h3 class="platform-card__name">Plex</h3>
             <p class="platform-card__desc">Metadata and artwork naming</p>
           </div>
           <div class="platform-card">
             <div class="platform-card__icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              <!-- Jellyfin: Purple jellyfish/blob shape -->
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <ellipse cx="24" cy="20" rx="16" ry="12" fill="#00A4DC"/>
+                <ellipse cx="18" cy="28" rx="4" ry="8" fill="#00A4DC"/>
+                <ellipse cx="24" cy="30" rx="3" ry="6" fill="#00A4DC"/>
+                <ellipse cx="30" cy="28" rx="4" ry="8" fill="#00A4DC"/>
+                <circle cx="24" cy="20" r="8" fill="url(#jellyfin-gradient)"/>
+                <defs>
+                  <linearGradient id="jellyfin-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#AA5CC3"/>
+                    <stop offset="100%" stop-color="#00A4DC"/>
+                  </linearGradient>
+                </defs>
+              </svg>
             </div>
             <h3 class="platform-card__name">Jellyfin</h3>
             <p class="platform-card__desc">Compatible folder structure</p>
           </div>
           <div class="platform-card">
             <div class="platform-card__icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              <!-- Emby: Green ribbon/swoosh -->
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <path d="M8 24C8 16 16 8 24 8c8 0 16 8 16 16 0 4-2 8-6 10-4-2-6-6-6-10 0-4 4-8 8-8-2-4-6-6-12-6-8 0-16 6-16 16 0 8 6 16 16 16h8v4h-8C16 40 8 32 8 24z" fill="#52B54B"/>
+              </svg>
             </div>
             <h3 class="platform-card__name">Emby</h3>
             <p class="platform-card__desc">Full metadata integration</p>
@@ -411,7 +435,33 @@
             </li>
           </ul>
 
-          <button class="pricing-card__btn" disabled aria-disabled="true">Coming Soon</button>
+          <div class="pricing-card__waitlist">
+            <p class="pricing-card__coming-soon">Coming Soon</p>
+            <form class="waitlist-form" id="waitlistForm">
+              <div class="waitlist-form__row">
+                <input 
+                  type="email" 
+                  class="waitlist-form__input" 
+                  placeholder="your@email.com" 
+                  required
+                  id="waitlistEmail"
+                  aria-label="Email address"
+                >
+                <button type="submit" class="waitlist-form__btn">
+                  <span class="waitlist-form__btn-text">Notify Me</span>
+                  <span class="waitlist-form__btn-loading" style="display: none;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 12a9 9 0 11-6.219-8.56"/>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+              <p class="waitlist-form__privacy">🔒 No spam — just the launch announcement.</p>
+            </form>
+            <div class="waitlist-success" id="waitlistSuccess" style="display: none;">
+              <p class="waitlist-success__text">You're on the list! 🎉</p>
+            </div>
+          </div>
           <p class="pricing-card__note">Secure checkout via Paddle. VAT included where applicable.</p>
         </div>
       </div>
@@ -427,8 +477,12 @@
           <img src="assets/icons/nav-icon.png" alt="" width="24" height="24" class="footer__icon">
           <span class="footer__name">Power Scraper Pro</span>
         </div>
+        <div class="footer__links">
+          <a href="/privacy" class="footer__link">Privacy</a>
+          <span class="footer__separator">·</span>
+          <a href="mailto:powerscraperpro@gmail.com" class="footer__link">Contact</a>
+        </div>
         <p class="footer__copy">&copy; 2026 Power Scraper Pro. All rights reserved.</p>
-        <!-- removed -->
       </div>
     </div>
   </footer>

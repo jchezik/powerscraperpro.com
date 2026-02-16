@@ -121,4 +121,55 @@
 
     sections.forEach(section => highlightObserver.observe(section));
   }
+
+  // --- Waitlist form handling ---
+  const waitlistForm = document.getElementById('waitlistForm');
+  const waitlistSuccess = document.getElementById('waitlistSuccess');
+
+  if (waitlistForm) {
+    waitlistForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const email = document.getElementById('waitlistEmail').value.trim();
+      const submitBtn = waitlistForm.querySelector('.waitlist-form__btn');
+      const btnText = submitBtn.querySelector('.waitlist-form__btn-text');
+      const btnLoading = submitBtn.querySelector('.waitlist-form__btn-loading');
+      
+      if (!email) return;
+
+      // Show loading state
+      submitBtn.disabled = true;
+      btnText.style.display = 'none';
+      btnLoading.style.display = 'inline-flex';
+
+      try {
+        const response = await fetch('/api/waitlist', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          // Success - show success message and hide form
+          waitlistForm.style.display = 'none';
+          waitlistSuccess.style.display = 'block';
+        } else {
+          // Error - show error message
+          alert(data.error || 'Something went wrong. Please try again.');
+        }
+      } catch (error) {
+        console.error('Waitlist submission error:', error);
+        alert('Network error. Please check your connection and try again.');
+      } finally {
+        // Reset button state
+        submitBtn.disabled = false;
+        btnText.style.display = 'inline';
+        btnLoading.style.display = 'none';
+      }
+    });
+  }
 })();
