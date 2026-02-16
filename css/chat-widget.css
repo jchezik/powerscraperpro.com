@@ -358,25 +358,150 @@
   flex-shrink: 0;
 }
 
-/* --- Responsive --- */
-@media (max-width: 480px) {
+/* --- Responsive: Tablets (portrait & landscape) --- */
+@media (max-width: 1024px) and (min-width: 481px) {
   .scrap-chat {
-    bottom: 0;
-    right: 0;
-    left: 0;
-    width: 100%;
-    max-height: 100vh;
-    max-height: 100dvh;
-    border-radius: 16px 16px 0 0;
+    width: 360px;
+    max-height: 480px;
+    bottom: 88px;
+    right: 20px;
   }
 
   .scrap-chat__messages {
-    max-height: calc(100dvh - 200px);
+    max-height: 300px;
+  }
+
+  .scrap-toggle {
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+/* --- Responsive: Mobile phones --- */
+@media (max-width: 480px) {
+  .scrap-chat {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    max-width: 100%;
+    max-height: 100vh;
+    max-height: 100dvh;
+    border-radius: 0;
+    z-index: 10000;
+  }
+
+  .scrap-chat__header {
+    padding: 14px 16px;
+    padding-top: max(14px, env(safe-area-inset-top));
+  }
+
+  .scrap-chat__messages {
+    max-height: none;
+    flex: 1;
+    min-height: 0;
+    padding: 12px 12px 8px;
+  }
+
+  .scrap-msg {
+    max-width: 90%;
+    font-size: 15px;
+    padding: 12px 16px;
+    line-height: 1.5;
+  }
+
+  .scrap-chat__input-area {
+    padding: 10px 12px;
+    padding-bottom: max(10px, env(safe-area-inset-bottom));
+  }
+
+  .scrap-chat__input {
+    font-size: 16px; /* prevents iOS zoom on focus */
+    padding: 12px 14px;
+    border-radius: 12px;
+  }
+
+  .scrap-chat__send {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+  }
+
+  .scrap-chat__send svg {
+    width: 18px;
+    height: 18px;
   }
 
   .scrap-toggle {
     bottom: 16px;
     right: 16px;
+    width: 52px;
+    height: 52px;
+  }
+
+  .scrap-chat__footer {
+    padding: 4px 12px 6px;
+    padding-bottom: max(6px, env(safe-area-inset-bottom));
+  }
+
+  .scrap-chat__avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  .scrap-chat__name {
+    font-size: 15px;
+  }
+
+  .scrap-chat__close {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* --- Small phones (iPhone SE, Galaxy S8, etc.) --- */
+@media (max-width: 375px) {
+  .scrap-msg {
+    font-size: 14px;
+    padding: 10px 14px;
+  }
+
+  .scrap-chat__header {
+    gap: 10px;
+    padding: 12px 14px;
+    padding-top: max(12px, env(safe-area-inset-top));
+  }
+}
+
+/* --- Landscape phones --- */
+@media (max-height: 500px) and (orientation: landscape) {
+  .scrap-chat {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: auto;
+    width: 50vw;
+    max-width: 400px;
+    max-height: 100vh;
+    max-height: 100dvh;
+    border-radius: 0;
+  }
+
+  .scrap-chat__messages {
+    max-height: none;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .scrap-toggle {
+    bottom: 12px;
+    right: 12px;
+    width: 48px;
+    height: 48px;
   }
 }
 

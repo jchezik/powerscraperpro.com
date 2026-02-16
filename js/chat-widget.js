@@ -67,23 +67,29 @@
     // Show welcome message
     addBotMessage(WELCOME_MSG, msgContainer);
 
-    // --- Events ---
-    toggle.addEventListener('click', () => {
-      isOpen = !isOpen;
-      chat.classList.toggle('scrap-chat--visible', isOpen);
-      toggle.classList.toggle('scrap-toggle--open', isOpen);
-      toggle.setAttribute('aria-label', isOpen ? 'Close chat' : 'Open chat');
-      if (isOpen) {
-        input.focus();
-      }
-    });
+    // --- Helper: open/close chat ---
+    function openChat() {
+      isOpen = true;
+      chat.classList.add('scrap-chat--visible');
+      toggle.classList.add('scrap-toggle--open');
+      toggle.setAttribute('aria-label', 'Close chat');
+      if (window.innerWidth <= 480) document.body.style.overflow = 'hidden';
+      input.focus();
+    }
 
-    closeBtn.addEventListener('click', () => {
+    function closeChat() {
       isOpen = false;
       chat.classList.remove('scrap-chat--visible');
       toggle.classList.remove('scrap-toggle--open');
       toggle.setAttribute('aria-label', 'Open chat');
-    });
+      chat.style.height = '';
+      chat.style.transform = '';
+      document.body.style.overflow = '';
+    }
+
+    // --- Events ---
+    toggle.addEventListener('click', () => isOpen ? closeChat() : openChat());
+    closeBtn.addEventListener('click', closeChat);
 
     sendBtn.addEventListener('click', () => sendMessage(input, msgContainer, sendBtn));
 
@@ -103,12 +109,31 @@
     // Escape to close
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && isOpen) {
-        isOpen = false;
-        chat.classList.remove('scrap-chat--visible');
-        toggle.classList.remove('scrap-toggle--open');
+        closeChat();
         toggle.focus();
       }
     });
+
+    // Mobile: handle virtual keyboard resize
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', () => {
+        if (isOpen && window.innerWidth <= 480) {
+          chat.style.height = window.visualViewport.height + 'px';
+          scrollToBottom(msgContainer);
+        }
+      });
+      window.visualViewport.addEventListener('scroll', () => {
+        if (isOpen && window.innerWidth <= 480) {
+          chat.style.transform = `translateY(${window.visualViewport.offsetTop}px)`;
+        }
+      });
+    }
+
+    // Mobile: prevent body scroll when chat is open (allow scrolling messages)
+    chat.addEventListener('touchmove', (e) => {
+      if (e.target === msgContainer || msgContainer.contains(e.target)) return;
+      e.preventDefault();
+    }, { passive: false });
   }
 
   // --- Send Message ---
