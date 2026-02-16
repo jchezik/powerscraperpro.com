@@ -1,10 +1,12 @@
-const CACHE_NAME = 'psp-v5';
+const CACHE_NAME = 'psp-v6';
 
 const PRECACHE_ASSETS = [
   '/',
   '/index.html',
   '/css/styles.css',
+  '/css/chat-widget.css',
   '/js/main.js',
+  '/js/chat-widget.js',
   '/manifest.json',
   '/assets/icons/app-icon.png'
 ];
@@ -35,7 +37,7 @@ self.addEventListener('fetch', (event) => {
   const { request } = event;
   const url = new URL(request.url);
 
-  if (request.method !== 'GET' || url.origin !== self.location.origin) {
+  if (request.method !== 'GET' || url.origin !== self.location.origin || url.pathname.startsWith('/api/')) {
     return;
   }
 
