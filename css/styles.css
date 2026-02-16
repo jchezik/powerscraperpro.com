@@ -620,6 +620,11 @@
     display: block;
   }
 
+  .hero__screenshot-frame picture {
+    display: block;
+    width: 100%;
+  }
+
   .hero__screenshot-glow {
     position: absolute;
     inset: -2px;
@@ -696,10 +701,17 @@
   }
 
   .showcase__image img {
+    width: 100%;
+    height: auto;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-xl);
     transition: transform var(--duration-slow) var(--ease-out),
                 box-shadow var(--duration-slow) var(--ease-out);
+  }
+
+  .showcase__image picture {
+    display: block;
+    width: 100%;
   }
 
   .showcase__image img:hover {
