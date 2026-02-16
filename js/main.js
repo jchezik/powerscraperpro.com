@@ -154,22 +154,22 @@
         const data = await response.json();
 
         if (response.ok) {
-          // Success - show success message and hide form
+          // Success - hide form entirely, show success message
           waitlistForm.style.display = 'none';
           waitlistSuccess.style.display = 'block';
+          return; // Don't reset button — form is hidden
         } else {
-          // Error - show error message
+          // Error - show inline error, reset button
           alert(data.error || 'Something went wrong. Please try again.');
         }
       } catch (error) {
         console.error('Waitlist submission error:', error);
         alert('Network error. Please check your connection and try again.');
-      } finally {
-        // Reset button state
-        submitBtn.disabled = false;
-        btnText.style.display = 'inline';
-        btnLoading.style.display = 'none';
       }
+      // Reset button state (only on error — success hides the form)
+      submitBtn.disabled = false;
+      btnText.style.display = 'inline';
+      btnLoading.style.display = 'none';
     });
   }
 })();
