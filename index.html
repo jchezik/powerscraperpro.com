@@ -10,6 +10,8 @@
   <meta property="og:title" content="Power Scraper Pro — Professional Media Library Manager">
   <meta property="og:description" content="Automated metadata scraping, artwork management, and library organization for macOS.">
   <meta property="og:image" content="https://www.powerscraperpro.com/assets/screenshots/hero-dashboard.png">
+  <meta property="og:image:width" content="1932">
+  <meta property="og:image:height" content="1422">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.powerscraperpro.com/">
   <meta property="og:site_name" content="Power Scraper Pro">
@@ -21,8 +23,9 @@
   <meta name="twitter:image" content="https://www.powerscraperpro.com/assets/screenshots/hero-dashboard.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/icons/app-icon.png">
-  <link rel="apple-touch-icon" href="assets/icons/app-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
 
   <!-- Canonical -->
   <link rel="canonical" href="https://www.powerscraperpro.com/">
@@ -33,7 +36,7 @@
 
   <!-- Preload critical assets -->
   <link rel="preload" href="css/styles.css" as="style">
-  <link rel="preload" href="assets/screenshots/hero-dashboard.png" as="image" fetchpriority="high">
+  <link rel="preload" href="assets/screenshots/hero-dashboard.webp" as="image" type="image/webp" fetchpriority="high">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,12 +52,27 @@
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "Power Scraper Pro",
-    "operatingSystem": "macOS",
+    "operatingSystem": "macOS 14 Sonoma or later",
     "applicationCategory": "MultimediaApplication",
-    "description": "Professional-grade metadata scraping, artwork management, and library organization for Kodi, Plex, Jellyfin, and Emby.",
+    "applicationSubCategory": "Media Library Manager",
+    "description": "Professional-grade metadata scraping, artwork management, and library organization for Kodi, Plex, Jellyfin, and Emby. Built natively for macOS with Swift.",
     "url": "https://www.powerscraperpro.com/",
     "image": "https://www.powerscraperpro.com/assets/icons/app-icon.png",
-    "screenshot": "https://www.powerscraperpro.com/assets/screenshots/hero-dashboard.png"
+    "screenshot": "https://www.powerscraperpro.com/assets/screenshots/hero-dashboard.webp",
+    "offers": {
+      "@type": "Offer",
+      "price": "14.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/PreOrder"
+    },
+    "featureList": "Automated metadata scraping, 22 artwork types, Safe Mode with hardlinks, NFO generation, Watch Folders, Library health checks, TMDB and Fanart.TV integration, Batch processing, Subtitle downloads",
+    "softwareRequirements": "macOS 14 Sonoma or later, Apple Silicon or Intel Mac",
+    "processorRequirements": "Apple Silicon (M1 or later) recommended, Intel supported",
+    "creator": {
+      "@type": "Organization",
+      "name": "Power Scraper Pro",
+      "url": "https://www.powerscraperpro.com"
+    }
   }
   </script>
 </head>
@@ -109,7 +127,10 @@
       </div>
       <div class="hero__screenshot">
         <div class="hero__screenshot-frame">
-          <img src="assets/screenshots/hero-dashboard.png" alt="Power Scraper Pro dashboard showing library overview with movies, TV shows, and storage statistics" width="1932" height="1422" class="hero__img" fetchpriority="high" draggable="false">
+          <picture>
+            <source srcset="assets/screenshots/hero-dashboard.webp" type="image/webp">
+            <img src="assets/screenshots/hero-dashboard.png" alt="Power Scraper Pro dashboard showing library overview with movies, TV shows, and storage statistics" width="1932" height="1422" class="hero__img" fetchpriority="high" draggable="false">
+          </picture>
         </div>
         <div class="hero__screenshot-glow"></div>
       </div>
@@ -191,7 +212,10 @@
             <p class="showcase__desc">Browse your library with stunning poster artwork. Click any title for full metadata, cast information, technical specs, and one-click artwork changes.</p>
           </div>
           <div class="showcase__image">
-            <img src="assets/screenshots/movie-detail.png" alt="Movie detail view showing Ready Player One with metadata, synopsis, and poster grid" loading="lazy" width="1769" height="1131" draggable="false">
+            <picture>
+              <source srcset="assets/screenshots/movie-detail.webp" type="image/webp">
+              <img src="assets/screenshots/movie-detail.png" alt="Movie detail view showing Ready Player One with metadata, synopsis, and poster grid" loading="lazy" width="1769" height="1131" draggable="false">
+            </picture>
           </div>
         </div>
 
@@ -202,7 +226,10 @@
             <p class="showcase__desc">Grid view with season tracking, episode completion, missing episode detection, and per-show detail panels with all metadata at your fingertips.</p>
           </div>
           <div class="showcase__image">
-            <img src="assets/screenshots/tv-grid-detail.png" alt="TV shows grid view with Vikings detail panel showing seasons and missing episodes" loading="lazy" width="2310" height="1369" draggable="false">
+            <picture>
+              <source srcset="assets/screenshots/tv-grid-detail.webp" type="image/webp">
+              <img src="assets/screenshots/tv-grid-detail.png" alt="TV shows grid view with Vikings detail panel showing seasons and missing episodes" loading="lazy" width="2310" height="1369" draggable="false">
+            </picture>
           </div>
         </div>
 
@@ -213,7 +240,10 @@
             <p class="showcase__desc">Choose from dozens of poster and fanart options pulled from TMDB and Fanart.TV. Preview at full resolution before applying to your library.</p>
           </div>
           <div class="showcase__image">
-            <img src="assets/screenshots/poster-selector.png" alt="Poster selection interface showing multiple artwork options for Ready Player One" loading="lazy" width="1769" height="1131" draggable="false">
+            <picture>
+              <source srcset="assets/screenshots/poster-selector.webp" type="image/webp">
+              <img src="assets/screenshots/poster-selector.png" alt="Poster selection interface showing multiple artwork options for Ready Player One" loading="lazy" width="1769" height="1131" draggable="false">
+            </picture>
           </div>
         </div>
 
@@ -224,7 +254,10 @@
             <p class="showcase__desc">Track upcoming movies and returning TV series from your library. Never miss a sequel, new season, or franchise continuation.</p>
           </div>
           <div class="showcase__image">
-            <img src="assets/screenshots/upcoming-releases.png" alt="Upcoming releases view showing movies and returning TV series with release dates" loading="lazy" width="1932" height="1422" draggable="false">
+            <picture>
+              <source srcset="assets/screenshots/upcoming-releases.webp" type="image/webp">
+              <img src="assets/screenshots/upcoming-releases.png" alt="Upcoming releases view showing movies and returning TV series with release dates" loading="lazy" width="1932" height="1422" draggable="false">
+            </picture>
           </div>
         </div>
 
@@ -235,7 +268,10 @@
             <p class="showcase__desc">Automatic franchise detection with completeness percentages. Instantly see which movies you're missing from any collection.</p>
           </div>
           <div class="showcase__image showcase__image--compact">
-            <img src="assets/screenshots/collections.png" alt="Collection completeness view showing Despicable Me, Minions, and Mortal Kombat collections with progress bars" loading="lazy" width="684" height="700" draggable="false">
+            <picture>
+              <source srcset="assets/screenshots/collections.webp" type="image/webp">
+              <img src="assets/screenshots/collections.png" alt="Collection completeness view showing Despicable Me, Minions, and Mortal Kombat collections with progress bars" loading="lazy" width="684" height="700" draggable="false">
+            </picture>
           </div>
         </div>
 
@@ -246,7 +282,10 @@
             <p class="showcase__desc">One-click health scan confirms your library is in perfect shape. Identifies issues with files, metadata, artwork, and folder structure.</p>
           </div>
           <div class="showcase__image">
-            <img src="assets/screenshots/verify-library.png" alt="Library verification complete showing green checkmark and healthy status" loading="lazy" width="1769" height="1131" draggable="false">
+            <picture>
+              <source srcset="assets/screenshots/verify-library.webp" type="image/webp">
+              <img src="assets/screenshots/verify-library.png" alt="Library verification complete showing green checkmark and healthy status" loading="lazy" width="1769" height="1131" draggable="false">
+            </picture>
           </div>
         </div>
       </div>
