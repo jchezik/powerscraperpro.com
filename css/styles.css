@@ -497,25 +497,45 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
+    width: 56px;
+    height: 56px;
     margin: 0 auto var(--space-4);
     color: var(--color-accent-light);
-    opacity: 0.7;
-    transition: filter var(--duration-normal) var(--ease-out), opacity var(--duration-normal) var(--ease-out);
+    opacity: 0.75;
+    transition: opacity var(--duration-normal) var(--ease-out),
+                transform var(--duration-normal) var(--ease-out),
+                filter var(--duration-normal) var(--ease-out);
   }
 
   .platform-card__icon svg {
-    filter: grayscale(100%);
+    filter: grayscale(20%) opacity(0.85);
     transition: filter var(--duration-normal) var(--ease-out);
   }
 
   .platform-card:hover .platform-card__icon {
     opacity: 1;
+    transform: translateY(-2px);
   }
 
   .platform-card:hover .platform-card__icon svg {
-    filter: grayscale(0%);
+    filter: grayscale(0%) opacity(1);
+  }
+
+  /* Brand-specific hover glows */
+  .platform-card:hover .kodi-icon svg {
+    filter: grayscale(0%) opacity(1) drop-shadow(0 4px 16px rgba(30, 136, 229, 0.4));
+  }
+
+  .platform-card:hover .plex-icon svg {
+    filter: grayscale(0%) opacity(1) drop-shadow(0 4px 16px rgba(229, 160, 13, 0.4));
+  }
+
+  .platform-card:hover .jellyfin-icon svg {
+    filter: grayscale(0%) opacity(1) drop-shadow(0 4px 16px rgba(139, 92, 246, 0.4));
+  }
+
+  .platform-card:hover .emby-icon svg {
+    filter: grayscale(0%) opacity(1) drop-shadow(0 4px 16px rgba(82, 196, 26, 0.4));
   }
 
   .platform-card__name {

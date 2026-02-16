@@ -35,7 +35,7 @@
   <meta name="theme-color" content="#0a0a0f">
 
   <!-- Preload critical assets -->
-  <link rel="preload" href="css/styles.css?v=22" as="style">
+  <link rel="preload" href="css/styles.css?v=23" as="style">
   <link rel="preload" href="assets/screenshots/hero-dashboard.webp" as="image" type="image/webp" fetchpriority="high">
 
   <!-- Fonts -->
@@ -44,8 +44,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/styles.css?v=22">
-  <link rel="stylesheet" href="css/lightbox.css?v=22">
+  <link rel="stylesheet" href="css/styles.css?v=23">
+  <link rel="stylesheet" href="css/lightbox.css?v=23">
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -345,52 +345,102 @@
 
         <div class="platforms__grid" data-reveal>
           <div class="platform-card">
-            <div class="platform-card__icon">
-              <!-- Kodi: Blue rounded square with stylized K -->
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                <rect x="4" y="4" width="40" height="40" rx="8" fill="#17B2E7"/>
-                <path d="M16 14h4v20h-4V14zm8 0h3l6 10-6 10h-3l6-10-6-10z" fill="white"/>
+            <div class="platform-card__icon kodi-icon">
+              <!-- Kodi: Blue gradient background with iconic infinity knot K -->
+              <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+                <defs>
+                  <linearGradient id="kodi-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#1E88E5"/>
+                    <stop offset="50%" stop-color="#1976D2"/>
+                    <stop offset="100%" stop-color="#0D47A1"/>
+                  </linearGradient>
+                  <linearGradient id="kodi-k" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FFFFFF"/>
+                    <stop offset="100%" stop-color="#E3F2FD"/>
+                  </linearGradient>
+                </defs>
+                <rect x="2" y="2" width="48" height="48" rx="12" fill="url(#kodi-gradient)"/>
+                <path d="M16 16h5v20h-5V16zm8.5 0h4.5l7 10-7 10h-4.5l7-10-7-10z" fill="url(#kodi-k)"/>
+                <rect x="2" y="2" width="48" height="48" rx="12" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
               </svg>
             </div>
             <h3 class="platform-card__name">Kodi</h3>
             <p class="platform-card__desc">Full NFO and artwork support</p>
           </div>
           <div class="platform-card">
-            <div class="platform-card__icon">
-              <!-- Plex: Orange play button triangle -->
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                <circle cx="24" cy="24" r="20" fill="#E5A00D"/>
-                <path d="M18 16l16 8-16 8V16z" fill="white"/>
+            <div class="platform-card__icon plex-icon">
+              <!-- Plex: Distinctive orange/amber play triangle -->
+              <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+                <defs>
+                  <linearGradient id="plex-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FF8C00"/>
+                    <stop offset="50%" stop-color="#E5A00D"/>
+                    <stop offset="100%" stop-color="#B8860B"/>
+                  </linearGradient>
+                  <filter id="plex-glow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                    <feMerge>
+                      <feMergeNode in="coloredBlur"/>
+                      <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                  </filter>
+                </defs>
+                <circle cx="26" cy="26" r="22" fill="url(#plex-gradient)" filter="url(#plex-glow)"/>
+                <path d="M19 16.5l18 9.5-18 9.5V16.5z" fill="white"/>
+                <circle cx="26" cy="26" r="22" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
               </svg>
             </div>
             <h3 class="platform-card__name">Plex</h3>
             <p class="platform-card__desc">Metadata and artwork naming</p>
           </div>
           <div class="platform-card">
-            <div class="platform-card__icon">
-              <!-- Jellyfin: Purple jellyfish/blob shape -->
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                <ellipse cx="24" cy="20" rx="16" ry="12" fill="#00A4DC"/>
-                <ellipse cx="18" cy="28" rx="4" ry="8" fill="#00A4DC"/>
-                <ellipse cx="24" cy="30" rx="3" ry="6" fill="#00A4DC"/>
-                <ellipse cx="30" cy="28" rx="4" ry="8" fill="#00A4DC"/>
-                <circle cx="24" cy="20" r="8" fill="url(#jellyfin-gradient)"/>
+            <div class="platform-card__icon jellyfin-icon">
+              <!-- Jellyfin: Purple/indigo gradient jellyfish -->
+              <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
                 <defs>
                   <linearGradient id="jellyfin-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#AA5CC3"/>
-                    <stop offset="100%" stop-color="#00A4DC"/>
+                    <stop offset="0%" stop-color="#8B5CF6"/>
+                    <stop offset="30%" stop-color="#7C3AED"/>
+                    <stop offset="70%" stop-color="#6366F1"/>
+                    <stop offset="100%" stop-color="#4F46E5"/>
+                  </linearGradient>
+                  <linearGradient id="jellyfin-tentacles" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#A855F7"/>
+                    <stop offset="100%" stop-color="#6366F1"/>
                   </linearGradient>
                 </defs>
+                <!-- Main jellyfish body -->
+                <ellipse cx="26" cy="18" rx="18" ry="14" fill="url(#jellyfin-gradient)"/>
+                <!-- Tentacles -->
+                <ellipse cx="20" cy="30" rx="3.5" ry="10" fill="url(#jellyfin-tentacles)" opacity="0.8"/>
+                <ellipse cx="26" cy="32" rx="3" ry="8" fill="url(#jellyfin-tentacles)" opacity="0.7"/>
+                <ellipse cx="32" cy="30" rx="3.5" ry="10" fill="url(#jellyfin-tentacles)" opacity="0.8"/>
+                <!-- Inner glow -->
+                <ellipse cx="26" cy="18" rx="12" ry="9" fill="url(#jellyfin-gradient)" opacity="0.6"/>
+                <!-- Highlight -->
+                <ellipse cx="22" cy="14" rx="6" ry="4" fill="rgba(255,255,255,0.2)"/>
               </svg>
             </div>
             <h3 class="platform-card__name">Jellyfin</h3>
             <p class="platform-card__desc">Compatible folder structure</p>
           </div>
           <div class="platform-card">
-            <div class="platform-card__icon">
-              <!-- Emby: Green ribbon/swoosh -->
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                <path d="M8 24C8 16 16 8 24 8c8 0 16 8 16 16 0 4-2 8-6 10-4-2-6-6-6-10 0-4 4-8 8-8-2-4-6-6-12-6-8 0-16 6-16 16 0 8 6 16 16 16h8v4h-8C16 40 8 32 8 24z" fill="#52B54B"/>
+            <div class="platform-card__icon emby-icon">
+              <!-- Emby: Green ribbon/swoosh forming an 'e' -->
+              <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+                <defs>
+                  <linearGradient id="emby-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#52C41A"/>
+                    <stop offset="50%" stop-color="#389E0D"/>
+                    <stop offset="100%" stop-color="#237804"/>
+                  </linearGradient>
+                </defs>
+                <!-- Outer ring -->
+                <circle cx="26" cy="26" r="20" fill="none" stroke="url(#emby-gradient)" stroke-width="3"/>
+                <!-- Inner swoosh forming 'e' -->
+                <path d="M10 26C10 16.5 18 9 26 9c8 0 14 6.5 14 14.5 0 4-2 7.5-5.5 9.5-3.5-2-5.5-5.5-5.5-9.5 0-4 3.5-7.5 7.5-7.5-2-3.5-5.5-5.5-10.5-5.5-7.5 0-14 5.5-14 14.5 0 7.5 5.5 14.5 14.5 14.5h7.5v3.5h-7.5C18 42 10 34.5 10 26z" fill="url(#emby-gradient)"/>
+                <!-- Inner accent -->
+                <circle cx="26" cy="26" r="12" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
               </svg>
             </div>
             <h3 class="platform-card__name">Emby</h3>
@@ -487,12 +537,12 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=22" defer></script>
-  <script src="js/lightbox.js?v=22" defer></script>
+  <script src="js/main.js?v=23" defer></script>
+  <script src="js/lightbox.js?v=23" defer></script>
 
   <!-- Scrap Chat Widget -->
-  <link rel="stylesheet" href="css/chat-widget.css?v=22">
-  <script src="js/chat-widget.js?v=22" defer></script>
+  <link rel="stylesheet" href="css/chat-widget.css?v=23">
+  <script src="js/chat-widget.js?v=23" defer></script>
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
