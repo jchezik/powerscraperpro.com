@@ -1,9 +1,9 @@
 # Static assets - immutable cache (versioned via service worker)
 /css/*
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, max-age=600, must-revalidate
 
 /js/*
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, max-age=600, must-revalidate
 
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
