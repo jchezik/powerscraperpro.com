@@ -871,11 +871,12 @@
 /* --------------------------------------------------------------------------
    Responsive
    -------------------------------------------------------------------------- */
+/* --- Tablet (≤1024px) --- */
 @media (max-width: 1024px) {
   .showcase__item,
   .showcase__item--reverse {
     grid-template-columns: 1fr;
-    gap: var(--space-8);
+    gap: var(--space-6);
   }
 
   .showcase__item--reverse .showcase__text,
@@ -886,8 +887,19 @@
   .showcase__image--compact {
     max-width: 100%;
   }
+
+  /* Make screenshots pop on dark backgrounds */
+  .showcase__image img {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  }
+
+  .showcase__image img:hover {
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  }
 }
 
+/* --- Small tablet / large phone (≤768px) --- */
 @media (max-width: 768px) {
   .nav__links,
   .nav__actions {
@@ -899,7 +911,8 @@
   }
 
   .features__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
   }
 
   .platforms__grid {
@@ -913,11 +926,26 @@
   .hero__screenshot {
     max-width: 100%;
   }
+
+  /* Tighten showcase spacing */
+  .showcase__item,
+  .showcase__item--reverse {
+    margin-bottom: var(--space-16);
+  }
+
+  .section-header {
+    margin-bottom: var(--space-10);
+  }
 }
 
+/* --- Phone (≤480px) --- */
 @media (max-width: 480px) {
-  .platforms__grid {
+  .features__grid {
     grid-template-columns: 1fr;
+  }
+
+  .platforms__grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .hero__eyebrow {
@@ -926,6 +954,39 @@
 
   .cta__inner {
     padding: var(--space-12) var(--space-6);
+  }
+
+  .feature-card {
+    padding: var(--space-6);
+  }
+
+  .showcase__item,
+  .showcase__item--reverse {
+    gap: var(--space-4);
+    margin-bottom: var(--space-12);
+  }
+
+  .showcase__title {
+    font-size: var(--font-size-xl);
+  }
+
+  .showcase__desc {
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* --- Small phone (≤375px) --- */
+@media (max-width: 375px) {
+  .hero__title {
+    font-size: clamp(2rem, 1.5rem + 4vw, 3rem);
+  }
+
+  .section-header__title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .platforms__grid {
+    grid-template-columns: 1fr;
   }
 }
 
