@@ -1,4 +1,4 @@
-const CACHE_NAME = 'psp-v24';
+const CACHE_NAME = 'psp-v25';
 
 const PRECACHE_ASSETS = [
   '/',

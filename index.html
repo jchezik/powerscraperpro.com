@@ -35,7 +35,7 @@
   <meta name="theme-color" content="#0a0a0f">
 
   <!-- Preload critical assets -->
-  <link rel="preload" href="css/styles.css?v=23" as="style">
+  <link rel="preload" href="css/styles.css?v=24" as="style">
   <link rel="preload" href="assets/screenshots/hero-dashboard.webp" as="image" type="image/webp" fetchpriority="high">
 
   <!-- Fonts -->
@@ -44,8 +44,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/styles.css?v=23">
-  <link rel="stylesheet" href="css/lightbox.css?v=23">
+  <link rel="stylesheet" href="css/styles.css?v=24">
+  <link rel="stylesheet" href="css/lightbox.css?v=24">
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -517,6 +517,20 @@
       </div>
     </section>
 
+    <!-- Requirements -->
+    <section class="requirements">
+      <div class="container">
+        <div class="requirements__content" data-reveal>
+          <p class="requirements__label">Requirements</p>
+          <div class="requirements__items">
+            <p class="requirements__item">macOS 26+ (Tahoe) · Apple Silicon optimized</p>
+            <p class="requirements__item">TMDB API key required (free at <a href="https://themoviedb.org" class="requirements__link">themoviedb.org</a>)</p>
+            <p class="requirements__item"><span class="requirements__optional">Optional:</span> Fanart.TV API key for extended artwork (free at <a href="https://fanart.tv" class="requirements__link">fanart.tv</a>)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- Footer -->
@@ -537,12 +551,12 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=23" defer></script>
-  <script src="js/lightbox.js?v=23" defer></script>
+  <script src="js/main.js?v=24" defer></script>
+  <script src="js/lightbox.js?v=24" defer></script>
 
   <!-- Scrap Chat Widget -->
-  <link rel="stylesheet" href="css/chat-widget.css?v=23">
-  <script src="js/chat-widget.js?v=23" defer></script>
+  <link rel="stylesheet" href="css/chat-widget.css?v=24">
+  <script src="js/chat-widget.js?v=24" defer></script>
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
